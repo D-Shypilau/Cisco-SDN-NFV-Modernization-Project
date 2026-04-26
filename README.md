@@ -19,7 +19,7 @@ The infrastructure follows a hub-and-spoke topology across 4 major European site
 * **ES-MAD-HQ (Madrid):** Regional hub with High Availability (HA) and ASAv security.
 * **ES-SEV-WH (Sevilla):** Warehouse site with automated WMS traffic prioritization.
 
-![Network Topology](./NetCore_SD_Project/topology/EVE.png)
+![Network Topology](./NetCore_SDN_Project/topology/EVE.png)
 
 ## 🛠 Technology Stack
 * **Control/Management:** Cisco SD-WAN (Viptela) vManage, vSmart, vBond.
