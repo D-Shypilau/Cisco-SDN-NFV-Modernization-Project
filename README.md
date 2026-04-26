@@ -1,6 +1,6 @@
 # Cisco SD-WAN & NFV Network Modernization Project
 **Enterprise Case Study: NetCore Solutions GmbH**
-> **Final Grade: A (Excellent)** | Modernizing a distributed network for a logistics provider.
+
 
 ## 🚀 Executive Summary
 This project delivers a complete architectural redesign and verification of a distributed enterprise network using **Cisco SDN (Software-Defined Networking)** and **NFV (Network Function Virtualization)**. The solution transitions a legacy CLI-managed infrastructure into a programmable, automated, and secure SD-WAN environment.
