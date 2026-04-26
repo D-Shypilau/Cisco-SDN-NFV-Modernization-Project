@@ -29,10 +29,10 @@ The infrastructure follows a hub-and-spoke topology across 4 major European site
 * **Automation:** Zero Touch Provisioning (ZTP), Policy-based routing.
 
 ## 📂 Project Structure
-* [/configs](./configs) - Base and operational configurations for all SD-WAN components.
-* [/topology](./topology) - EVE-NG export files and visual network diagrams.
-* [/analytics](./analytics) - Business impact reports, ROI calculations, and verification protocols.
-* [/presentation](./presentation) - Full technical documentation and thesis presentation.
+* [/configs](./NetCore_SDN_Project/configs) - Base and operational configurations for all SD-WAN components.
+* [/topology](./NetCore_SDN_Project/topology) - EVE-NG export files and visual network diagrams.
+* [/analytics](./NetCore_SDN_Project/analytics) - Business impact reports, ROI calculations, and verification protocols.
+* [/presentation](./NetCore_SDN_Project/presentation) - Full technical documentation and thesis presentation.
 
 ## 🛡 Business Impact
 The project was initiated following a critical outage in Sevilla that cost the company **€57,480**. By implementing SD-WAN policies, we eliminated single points of failure and reduced manual configuration errors by **99.6%**, preventing an estimated **€247,000/year** in potential downtime losses.
