@@ -27,7 +27,7 @@ The exported topology contains the following main functions:
 - a Frankfurt core switching node;
 - endpoint/VPC nodes used to represent branch and warehouse clients.
 
-The public `.unl` has been sanitized and its branch addressing/site/transport baseline is documented in `docs/ARCHITECTURE_BASELINE.md`, `lab/eve-ng/inventory.yaml` and `configs/canonical/`.
+The public `.unl` has been sanitized and its branch addressing/site/transport baseline is documented in [`ARCHITECTURE_BASELINE.md`](./ARCHITECTURE_BASELINE.md), [`../lab/eve-ng/inventory.yaml`](../lab/eve-ng/inventory.yaml) and [`../configs/canonical/`](../configs/canonical/).
 
 ## Thesis-level target architecture
 
@@ -53,7 +53,7 @@ The thesis/defense materials report several important results. For a public engi
 - ZTP deployment: **22–30 min** — thesis-reported; current public artifacts do not contain a reproducible onboarding capture.
 - Security isolation: **3.8 s** — thesis-reported; current public lab does not implement the same ISE/SGT test chain.
 
-Generated expected-state examples are therefore stored separately under `evidence/simulated/` and explicitly labeled as not captured from a running lab.
+Generated expected-state examples are therefore stored separately under [`../evidence/simulated/`](../evidence/simulated/) and explicitly labeled as not captured from a running lab.
 
 ## Economic KPI status
 
@@ -73,9 +73,21 @@ The canonical public calculation uses:
 
 The defense-material values **€422,000/year**, **28% ROI** and **1.4-year payback** remain historical **thesis-reported** values because the public inputs do not reproduce them under one consistent formula set.
 
-## Remaining reconciliation / reproducibility limits
+## Resolved public-baseline items
 
-The major topology identity, site-ID, system-IP, branch underlay-addressing and public sanitization issues are now resolved for the GitHub baseline.
+The following audit items are resolved for the current GitHub baseline:
+
+- one public source of truth: `lab/eve-ng/NetCore_SDN_Project.unl`;
+- Warsaw/Madrid/Sevilla site mapping;
+- public branch `site-id` and `system-ip` values;
+- branch underlay subnets, next hops and transport colors;
+- one Madrid WAN Edge and no Madrid ASAv in the exported lab;
+- sanitized `.unl` startup payloads;
+- sanitized canonical Edge/underlay/ASAv extracts;
+- economic KPI reconciliation;
+- historical-software/product-naming documentation.
+
+## Remaining reproducibility limits
 
 Remaining limitations include:
 
@@ -84,15 +96,16 @@ Remaining limitations include:
 - genuine runtime control-plane/OMP/BFD/reachability captures are unavailable because the lab cannot currently be executed;
 - the current public topology does not reproduce the thesis dual-transport Sevilla failover scenario;
 - Cisco DNA Center / Catalyst Center, Cisco ISE and ENCS/NFVIS are not present as running nodes;
-- API/NETCONF/YANG automation scripts are not part of the recovered defended-lab artifacts.
+- API/NETCONF/YANG automation scripts are not part of the recovered defended-lab artifacts;
+- the reviewed defense-presentation PDF has not yet been uploaded to the repository through a verified binary-safe path.
 
 These gaps do **not** invalidate the thesis design. They define the boundary between defended research, preserved implementation artifacts and what is reproducible from the public repository today.
 
-## Product naming note
+## Historical software / product naming
 
-The thesis preserves the names used in the original laboratory and academic text: **Cisco SD-WAN, vManage, vBond, vSmart and Cisco DNA Center**.
+The lab preserves software and naming from the defended project, including Cisco SD-WAN 20.6.2, ASAv 9.9(1), `vManage`, `vBond`, `vSmart` and Cisco DNA Center terminology.
 
-In current Cisco documentation these are commonly branded as **Cisco Catalyst SD-WAN**, **Catalyst SD-WAN Manager**, **Catalyst SD-WAN Validator**, **Catalyst SD-WAN Controller**, and **Cisco Catalyst Center**. The repository may show both terms so that the thesis remains historically consistent while the portfolio remains understandable to current readers.
+These versions/names are retained for traceability, not presented as current production recommendations. Current Cisco naming and lifecycle context are documented in [`HISTORICAL_SOFTWARE_COMPATIBILITY.md`](./HISTORICAL_SOFTWARE_COMPATIBILITY.md).
 
 ## Academic case-study notice
 
