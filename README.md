@@ -78,6 +78,14 @@ The defense materials also report **€422,000/year**, **28% ROI** and **1.4-yea
 
 See [`analytics/ECONOMIC_MODEL.md`](./analytics/ECONOMIC_MODEL.md) for the formulas, assumptions and reconciliation notes.
 
+## Historical Software Compatibility
+
+The recovered lab preserves historical software for traceability, including **Cisco SD-WAN 20.6.2** and **ASAv 9.9(1)**. These versions are documented to reproduce the defended academic environment and are **not** recommendations for a new production deployment.
+
+The thesis also uses historical product names such as `vManage`, `vBond`, `vSmart` and `Cisco DNA Center`. Current Cisco terminology is documented alongside those names where useful.
+
+See [`docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md`](./docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md) for lifecycle, naming and reproduction guidance.
+
 ## Repository Structure
 
 ```text
@@ -95,6 +103,7 @@ Cisco-SDN-NFV-Modernization-Project/
 │   └── snapshots/
 ├── docs/
 │   ├── ARCHITECTURE_BASELINE.md
+│   ├── HISTORICAL_SOFTWARE_COMPATIBILITY.md
 │   ├── IMPLEMENTATION_STATUS.md
 │   ├── PUBLICATION_CHECKLIST.md
 │   └── presentation/
@@ -157,6 +166,8 @@ Run controlled failure tests where the topology supports them
 Save raw evidence in evidence/
 ```
 
+Because the recovered controller startup state is incomplete, importing the `.unl` is not claimed to provide one-click reconstruction of a fully operational SD-WAN fabric.
+
 ## Publication Scope
 
 **Not published:**
@@ -175,11 +186,11 @@ Save raw evidence in evidence/
 - historical configuration snapshots with limitations documented;
 - simulated/expected evidence clearly separated from runtime evidence;
 - academic case-study summaries and economic model;
-- implementation notes and limitations.
+- implementation notes, software-compatibility note and limitations.
 
 ## Status
 
-The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The architecture/configuration baseline, `.unl` sanitization and public economic model are now reconciled. Remaining work focuses on presentation publication, final documentation review and any future replacement of simulated evidence with genuine runtime captures if the lab becomes available.
+The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The architecture/configuration baseline, `.unl` sanitization, economic model and documentation/link audit are substantially complete. Remaining work focuses on presentation publication, the unrecovered exact EVE-NG edition and any future replacement of simulated evidence with genuine runtime captures if the lab becomes available.
 
 ## Responsible Use
 
