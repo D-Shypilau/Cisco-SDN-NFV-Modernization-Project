@@ -50,19 +50,33 @@ Measured / evidenced
 
 See [`docs/IMPLEMENTATION_STATUS.md`](./docs/IMPLEMENTATION_STATUS.md) for the current technical boundary.
 
-## Reported Project Results
+## Project Results and Evidence Status
 
-The defense materials report these academic case-study values:
+The defense materials report these academic case-study technical values:
 
 - **SD-WAN failover:** ~850 ms;
 - **ZTP onboarding:** 22 min measured / target <30 min;
-- **security isolation scenario:** 3.8 s;
-- **OPEX reduction:** ~40%;
-- **ROI:** 28%;
-- **payback period:** 1.4 years;
-- **estimated annual economic effect:** ~€422,000.
+- **security isolation scenario:** 3.8 s.
 
-These are project-specific thesis results, not generic Cisco benchmarks. Before the final tagged portfolio release, every public headline value must either be linked to publishable evidence or clearly marked as a thesis-derived case-study result.
+These remain **thesis-reported** values because the current public EVE-NG snapshot does not reproduce the exact test conditions needed to verify them. The repository therefore keeps generated expected-state examples separate from real runtime evidence.
+
+### Reconciled economic model
+
+The public portfolio now uses one internally consistent business-case calculation:
+
+- traditional annual OPEX: **€430,000**;
+- optimized annual OPEX: **€262,000**;
+- annual OPEX saving: **€168,000**;
+- OPEX reduction: **39.1% (~40% rounded)**;
+- avoided-loss assumption: **€247,000/year**;
+- reconciled gross annual economic effect: **€415,000/year**;
+- implementation investment range: **€180,000–€220,000**;
+- simple full-effect payback: **0.43–0.53 years**;
+- simple first-year ROI: **88.6%–130.6%**.
+
+The defense materials also report **€422,000/year**, **28% ROI** and **1.4-year payback**. Those values are preserved as **legacy thesis-reported figures**, but they are not mixed into the reconciled public model because the currently published inputs do not reproduce them under one consistent formula set.
+
+See [`analytics/ECONOMIC_MODEL.md`](./analytics/ECONOMIC_MODEL.md) for the formulas, assumptions and reconciliation notes.
 
 ## Repository Structure
 
@@ -73,27 +87,37 @@ Cisco-SDN-NFV-Modernization-Project/
 ├── SECURITY.md
 ├── analytics/
 │   ├── README.md
+│   ├── ECONOMIC_MODEL.md
 │   └── case-study/
 ├── configs/
 │   ├── README.md
+│   ├── canonical/
 │   └── snapshots/
 ├── docs/
+│   ├── ARCHITECTURE_BASELINE.md
 │   ├── IMPLEMENTATION_STATUS.md
 │   ├── PUBLICATION_CHECKLIST.md
 │   └── presentation/
 │       └── README.md
 ├── evidence/
-│   └── README.md
+│   ├── README.md
+│   ├── VERIFICATION_RUNBOOK.md
+│   └── simulated/
 └── lab/
     └── eve-ng/
         ├── README.md
+        ├── inventory.yaml
         ├── NetCore_SDN_Project.unl
         └── topology.png
 ```
 
 ### `lab/eve-ng/`
 
-The current EVE-NG laboratory snapshot and its topology image. Cisco appliance images are not distributed.
+The current sanitized EVE-NG laboratory snapshot, topology image and machine-readable inventory. Cisco appliance images are not distributed.
+
+### `configs/canonical/`
+
+Sanitized configuration extracts aligned with the public `.unl` baseline. Complete controller startup state is not claimed because it is not fully present in the exported lab.
 
 ### `configs/snapshots/`
 
@@ -101,15 +125,15 @@ Original text configuration exports preserved for analysis. They are explicitly 
 
 ### `evidence/`
 
-The destination for reproducible command output, failover measurements, control-plane state, connectivity checks, security validation and ZTP evidence.
+Contains the verification runbook and clearly labeled simulated/expected outputs. Simulated files are not presented as captures from a running lab.
 
-### `analytics/case-study/`
+### `analytics/`
 
-Supporting academic case-study documents for infrastructure assessment, verification and efficiency analysis.
+Supporting academic case-study documents and the reconciled economic model.
 
 ### `docs/presentation/`
 
-Reserved for the public defense presentation. A verified PDF has been prepared locally; it will be committed only after a full-size binary upload is verified. The full thesis document is not included.
+Reserved for the public defense presentation. A verified PDF has been prepared locally; it will be committed only through a binary-safe upload path. The full thesis document is not included.
 
 ## Reproducing the Lab
 
@@ -128,12 +152,10 @@ Verify control connections / OMP / BFD
         ↓
 Verify branch reachability and policies
         ↓
-Run controlled failure tests
+Run controlled failure tests where the topology supports them
         ↓
 Save raw evidence in evidence/
 ```
-
-Do not treat the configuration snapshots as a ready-to-deploy canonical configuration set until the reconciliation items in `docs/IMPLEMENTATION_STATUS.md` are closed.
 
 ## Publication Scope
 
@@ -148,15 +170,16 @@ Do not treat the configuration snapshots as a ready-to-deploy canonical configur
 **Published:**
 
 - architecture and lab topology;
-- EVE-NG definition;
-- configuration snapshots with limitations clearly documented;
-- reproducible evidence as it is validated;
-- academic case-study summaries;
+- sanitized EVE-NG definition;
+- canonical sanitized configuration extracts;
+- historical configuration snapshots with limitations documented;
+- simulated/expected evidence clearly separated from runtime evidence;
+- academic case-study summaries and economic model;
 - implementation notes and limitations.
 
 ## Status
 
-The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The main priorities are one consistent topology, sanitized configs, evidence traceability and consistent technical/economic claims.
+The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The architecture/configuration baseline, `.unl` sanitization and public economic model are now reconciled. Remaining work focuses on presentation publication, final documentation review and any future replacement of simulated evidence with genuine runtime captures if the lab becomes available.
 
 ## Responsible Use
 
