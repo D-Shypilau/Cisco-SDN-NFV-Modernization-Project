@@ -1,14 +1,12 @@
 # Defense Presentation
 
-This directory is reserved for the public defense presentation associated with the engineering project.
+This directory contains the public defense presentation associated with the engineering project.
 
-## Final public deck status
+## Final public deck
 
-A cleaned public presentation PDF has been prepared outside the repository:
+The reviewed public presentation is published as:
 
-```text
-NetCore_SDN_NFV_Public_GitHub_Final.pdf
-```
+[`NetCore_SDN_NFV_Public_GitHub_Final.pdf`](./NetCore_SDN_NFV_Public_GitHub_Final.pdf)
 
 The public deck was updated to:
 
@@ -19,7 +17,18 @@ The public deck was updated to:
 - separate simulated/expected evidence from real runtime captures;
 - avoid publishing the full thesis document.
 
-The PDF has been rendered and visually checked locally. It must be committed only through a binary-safe upload path; a truncated or corrupted PDF must not be committed.
+## Binary verification
+
+The GitHub file was verified against the locally reviewed PDF:
+
+- GitHub size: `2,773,845` bytes;
+- Git blob SHA-1: `66d3cc13f194733969b9760fad43fdee958b41fd`;
+- local reviewed file has the same size and Git blob SHA-1;
+- PDF format: PDF 1.7;
+- page count: 11;
+- encrypted: no.
+
+The matching Git blob hash proves the uploaded GitHub object is byte-for-byte identical to the locally rendered and reviewed final PDF.
 
 ## Publication rule
 
