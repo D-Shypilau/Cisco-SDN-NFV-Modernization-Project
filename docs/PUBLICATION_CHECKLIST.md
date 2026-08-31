@@ -67,7 +67,7 @@ Economic reconciliation is documented in [`../analytics/ECONOMIC_MODEL.md`](../a
 
 ## 6. Presentation publication
 
-Recommended public structure:
+Public structure:
 
 ```text
 docs/
@@ -81,7 +81,8 @@ docs/
 - [x] Remove the old oversized presentation PPTX from the cleaned public structure.
 - [x] Prepare and visually review the final public 11-page PDF locally.
 - [x] Remove/correct visible placeholder, numbering and outdated KPI artifacts in the public presentation.
-- [ ] Add the reviewed PDF presentation through a verified binary-safe GitHub upload path.
+- [x] Upload the reviewed PDF through GitHub's normal binary-safe web upload.
+- [x] Verify the GitHub PDF size (`2,773,845` bytes) and Git blob SHA-1 (`66d3cc13f194733969b9760fad43fdee958b41fd`) against the locally reviewed PDF.
 
 ## 7. README / portfolio quality
 
@@ -115,10 +116,12 @@ Before creating `v1.0`:
 - [x] no known credential hashes or secrets in the public `.unl`/canonical configuration baseline;
 - [x] one documented public topology baseline;
 - [x] public presentation content reviewed locally;
-- [ ] public presentation PDF present in the GitHub repository and verified openable/full-size;
+- [x] public presentation PDF present in GitHub and binary identity verified against the reviewed local PDF;
 - [x] economic claims traceable to the reconciled model or explicitly labeled legacy/thesis-reported;
 - [x] current Markdown navigation/content reviewed against the cleaned repository tree;
 - [x] README structure matches the current branch contents;
 - [x] keep `DNA Center` terminology in the GitHub repository description/project framing;
 - [x] pre-merge content/security review completed;
-- [ ] tag the reviewed state as `v1.0-thesis-portfolio` only after the PDF upload and explicit merge approval.
+- [ ] move PR #1 out of Draft only after explicit user approval;
+- [ ] merge into `main` only after explicit user approval;
+- [ ] tag the reviewed state as `v1.0-thesis-portfolio` after the approved merge.
