@@ -15,10 +15,13 @@ This checklist tracks the work required before publishing a clean `v1.0` portfol
 
 ## 2. Software versions
 
-- [ ] Record the exact EVE-NG edition used for the historical/final lab snapshot if it can be recovered reliably.
+- [ ] Record the exact EVE-NG edition used for the historical lab snapshot if it can be recovered reliably.
 - [x] Record the Cisco SD-WAN image version visible in the exported topology (`20.6.2`).
 - [x] Record the ASAv version visible in the exported topology (`9.9.1`).
-- [ ] Add a concise compatibility note explaining that historical lab images are preserved for academic reproducibility rather than recommended as current production software.
+- [x] Add a compatibility note explaining that historical lab images are preserved for academic reproducibility rather than recommended as current production software.
+- [x] Document current Cisco Catalyst SD-WAN / Catalyst Center naming alongside historical project terminology.
+
+See [`HISTORICAL_SOFTWARE_COMPATIBILITY.md`](./HISTORICAL_SOFTWARE_COMPATIBILITY.md).
 
 ## 3. Configuration publication
 
@@ -26,6 +29,7 @@ This checklist tracks the work required before publishing a clean `v1.0` portfol
 - [x] Remove password hashes, credentials and secret-bearing startup content from the public `.unl`.
 - [x] Add Madrid configuration baseline.
 - [x] Organize canonical configurations into controller/edge/security/underlay sections.
+- [x] Update configuration documentation to reflect completed `.unl` sanitization.
 - [ ] Replace the controller limitation with real same-state exports only if a runnable lab becomes available.
 
 ## 4. Verification evidence
@@ -50,7 +54,7 @@ Claim → Test method → Raw result → Calculation → Conclusion
 
 The defense materials report technical values including 850 ms failover, 3.8 s security isolation and 22-minute ZTP onboarding. These remain explicitly **thesis-reported** because the current public snapshot does not reproduce their complete test conditions.
 
-Economic reconciliation is now documented in [`../analytics/ECONOMIC_MODEL.md`](../analytics/ECONOMIC_MODEL.md).
+Economic reconciliation is documented in [`../analytics/ECONOMIC_MODEL.md`](../analytics/ECONOMIC_MODEL.md).
 
 - [x] distinguish measured/simulated technical evidence from thesis-reported values;
 - [x] reconcile OPEX arithmetic using €430,000 and €262,000 annual operating-cost inputs;
@@ -82,12 +86,14 @@ docs/
 
 - [x] Introduce the bachelor thesis engineering project clearly.
 - [x] Show the network topology near the top.
-- [x] Explain repository directories.
+- [x] Explain the current repository directories.
 - [x] Add responsible-use and proprietary-image notice.
 - [x] State that the full thesis is not part of the public repository.
 - [x] Document the reconciled economic model and distinguish legacy thesis values.
-- [x] Add a short section describing limitations of the virtual lab.
-- [ ] Complete a final link/content review before release.
+- [x] Document limitations of the virtual lab.
+- [x] Add historical software compatibility/lifecycle guidance.
+- [x] Complete the final content/navigation review for the current Markdown structure.
+- [x] Remove stale references to the old `topology/` layout and pre-sanitization status from current documentation.
 
 ## 8. Optional engineering improvements
 
@@ -108,6 +114,7 @@ Before creating `v1.0`:
 - [x] one documented public topology baseline;
 - [ ] public presentation reviewed and present;
 - [x] economic claims traceable to the reconciled model or explicitly labeled legacy/thesis-reported;
-- [ ] all links and rendered Markdown reviewed;
-- [ ] repository description matches actual final content;
-- [ ] tag the reviewed state as `v1.0-thesis-portfolio`.
+- [x] current Markdown navigation/content reviewed against the cleaned repository tree;
+- [x] README structure matches the current branch contents;
+- [ ] decide whether the GitHub repository description should be updated from `DNA Center` to `Catalyst Center (formerly DNA Center)` terminology;
+- [ ] tag the reviewed state as `v1.0-thesis-portfolio` only after the presentation decision/final check.
