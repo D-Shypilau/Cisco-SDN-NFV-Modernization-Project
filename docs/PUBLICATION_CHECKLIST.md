@@ -72,15 +72,16 @@ Recommended public structure:
 ```text
 docs/
 └── presentation/
-    ├── Thesis_Defense_Presentation.pdf
+    ├── NetCore_SDN_NFV_Public_GitHub_Final.pdf
     └── README.md
 ```
 
 - [x] Do **not** publish the full thesis PDF, source document or complete thesis text.
 - [x] Use the private thesis only to verify repository documentation and evidence.
 - [x] Remove the old oversized presentation PPTX from the cleaned public structure.
-- [ ] Add the reviewed PDF presentation through a binary-safe upload path.
-- [ ] Remove broken placeholders, numbering artifacts and internal editing marks from the public presentation if editing is performed before upload.
+- [x] Prepare and visually review the final public 11-page PDF locally.
+- [x] Remove/correct visible placeholder, numbering and outdated KPI artifacts in the public presentation.
+- [ ] Add the reviewed PDF presentation through a verified binary-safe GitHub upload path.
 
 ## 7. README / portfolio quality
 
@@ -94,6 +95,7 @@ docs/
 - [x] Add historical software compatibility/lifecycle guidance.
 - [x] Complete the final content/navigation review for the current Markdown structure.
 - [x] Remove stale references to the old `topology/` layout and pre-sanitization status from current documentation.
+- [x] Complete and record the pre-merge repository review in [`PRE_MERGE_REVIEW.md`](./PRE_MERGE_REVIEW.md).
 
 ## 8. Optional engineering improvements
 
@@ -112,9 +114,11 @@ Before creating `v1.0`:
 - [x] no thesis PDF/full text in the repository;
 - [x] no known credential hashes or secrets in the public `.unl`/canonical configuration baseline;
 - [x] one documented public topology baseline;
-- [ ] public presentation reviewed and present;
+- [x] public presentation content reviewed locally;
+- [ ] public presentation PDF present in the GitHub repository and verified openable/full-size;
 - [x] economic claims traceable to the reconciled model or explicitly labeled legacy/thesis-reported;
 - [x] current Markdown navigation/content reviewed against the cleaned repository tree;
 - [x] README structure matches the current branch contents;
-- [ ] decide whether the GitHub repository description should be updated from `DNA Center` to `Catalyst Center (formerly DNA Center)` terminology;
-- [ ] tag the reviewed state as `v1.0-thesis-portfolio` only after the presentation decision/final check.
+- [x] keep `DNA Center` terminology in the GitHub repository description/project framing;
+- [x] pre-merge content/security review completed;
+- [ ] tag the reviewed state as `v1.0-thesis-portfolio` only after the PDF upload and explicit merge approval.
