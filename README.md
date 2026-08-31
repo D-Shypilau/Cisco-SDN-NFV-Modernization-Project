@@ -70,6 +70,7 @@ These are project-specific thesis results, not generic Cisco benchmarks. Before 
 Cisco-SDN-NFV-Modernization-Project/
 ├── README.md
 ├── LICENSE
+├── SECURITY.md
 ├── analytics/
 │   ├── README.md
 │   └── case-study/
@@ -80,8 +81,7 @@ Cisco-SDN-NFV-Modernization-Project/
 │   ├── IMPLEMENTATION_STATUS.md
 │   ├── PUBLICATION_CHECKLIST.md
 │   └── presentation/
-│       ├── README.md
-│       └── Thesis_Defense_Presentation.pdf
+│       └── README.md
 ├── evidence/
 │   └── README.md
 └── lab/
@@ -109,7 +109,7 @@ Supporting academic case-study documents for infrastructure assessment, verifica
 
 ### `docs/presentation/`
 
-Browser-friendly PDF of the defense presentation. The full thesis document is not included.
+Reserved for the public defense presentation. A verified PDF has been prepared locally; it will be committed only after a full-size binary upload is verified. The full thesis document is not included.
 
 ## Reproducing the Lab
 
@@ -135,12 +135,6 @@ Save raw evidence in evidence/
 
 Do not treat the configuration snapshots as a ready-to-deploy canonical configuration set until the reconciliation items in `docs/IMPLEMENTATION_STATUS.md` are closed.
 
-## Public Presentation
-
-The defense presentation is available here:
-
-[`docs/presentation/Thesis_Defense_Presentation.pdf`](./docs/presentation/Thesis_Defense_Presentation.pdf)
-
 ## Publication Scope
 
 **Not published:**
@@ -155,10 +149,9 @@ The defense presentation is available here:
 
 - architecture and lab topology;
 - EVE-NG definition;
-- sanitized configuration snapshots;
+- configuration snapshots with limitations clearly documented;
 - reproducible evidence as it is validated;
 - academic case-study summaries;
-- defense presentation;
 - implementation notes and limitations.
 
 ## Status
