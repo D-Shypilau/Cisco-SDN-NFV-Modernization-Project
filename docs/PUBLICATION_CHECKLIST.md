@@ -6,42 +6,41 @@ This checklist tracks the work required before publishing a clean `v1.0` portfol
 
 ## 1. Architecture consistency
 
-- [ ] Choose one final architecture as the source of truth for the public engineering project.
-- [ ] Reconcile `README.md`, `topology/NetCore_SDN_Project.unl`, `topology/nodes_description.txt`, configuration exports and defense presentation.
-- [ ] Verify that Frankfurt, Warsaw, Madrid and Sevilla use the same names everywhere.
-- [ ] Verify that all `site-id` values are consistent everywhere.
-- [ ] Verify all `system-ip`, underlay IP addresses and transport colors.
-- [ ] Verify the actual number of Madrid WAN Edge and ASAv nodes.
+- [x] Choose one final architecture as the source of truth for the public engineering project.
+- [x] Reconcile the public README, EVE-NG `.unl`, machine-readable inventory and canonical configuration baseline.
+- [x] Verify Frankfurt, Warsaw, Madrid and Sevilla naming in the public baseline.
+- [x] Verify public `site-id` values.
+- [x] Verify public `system-ip`, underlay IP addresses and transport colors for the branch Edge nodes.
+- [x] Verify the actual number of Madrid WAN Edge and ASAv nodes in the exported `.unl`.
 
 ## 2. Software versions
 
-- [ ] Record the exact EVE-NG edition used for the final lab snapshot.
-- [ ] Record exact Cisco SD-WAN image versions used by every node.
-- [ ] Record exact ASAv version.
-- [ ] Explain when legacy lab images are used for educational compatibility.
+- [ ] Record the exact EVE-NG edition used for the historical/final lab snapshot if it can be recovered reliably.
+- [x] Record the Cisco SD-WAN image version visible in the exported topology (`20.6.2`).
+- [x] Record the ASAv version visible in the exported topology (`9.9.1`).
+- [ ] Add a concise compatibility note explaining that historical lab images are preserved for academic reproducibility rather than recommended as current production software.
 
 ## 3. Configuration publication
 
-- [ ] Export configurations from the same final EVE-NG snapshot.
-- [ ] Remove or redact password hashes, credentials, tokens and private keys.
-- [ ] Add missing Madrid configuration exports if Madrid is part of the final topology.
-- [ ] Organize configurations into `controllers/`, `edges/` and `security/`.
+- [x] Build sanitized canonical branch/underlay/security extracts from the same public EVE-NG baseline.
+- [x] Remove password hashes, credentials and secret-bearing startup content from the public `.unl`.
+- [x] Add Madrid configuration baseline.
+- [x] Organize canonical configurations into controller/edge/security/underlay sections.
+- [ ] Replace the controller limitation with real same-state exports only if a runnable lab becomes available.
 
 ## 4. Verification evidence
 
-Create a human-readable `evidence/` directory containing, where available:
+The repository contains a verification runbook and clearly separated simulated/expected examples.
 
-- [ ] control connections;
-- [ ] OMP peer / route verification;
-- [ ] BFD state;
-- [ ] branch reachability tests;
-- [ ] failover measurements;
-- [ ] policy verification;
-- [ ] WMS/segmentation validation;
-- [ ] ASAv/security validation;
-- [ ] ZTP/deployment timing evidence.
+- [x] document expected control connections;
+- [x] document expected OMP/TLOC state;
+- [x] document expected BFD state;
+- [x] document expected underlay state;
+- [x] mark all generated examples as `SIMULATED — NOT CAPTURED FROM A RUNNING LAB`;
+- [ ] collect genuine runtime captures if the lab becomes executable in the future;
+- [ ] reproduce failover/security/ZTP measurements only if the required topology and test conditions become available.
 
-Each headline metric should be traceable as:
+Each measured headline metric should remain traceable as:
 
 ```text
 Claim → Test method → Raw result → Calculation → Conclusion
@@ -49,24 +48,18 @@ Claim → Test method → Raw result → Calculation → Conclusion
 
 ## 5. Thesis-derived metrics
 
-The defense materials report:
+The defense materials report technical values including 850 ms failover, 3.8 s security isolation and 22-minute ZTP onboarding. These remain explicitly **thesis-reported** because the current public snapshot does not reproduce their complete test conditions.
 
-- ROI: 28%;
-- payback: 1.4 years;
-- OPEX reduction: 40%;
-- failover: 850 ms;
-- threat blocking: 3.8 s;
-- ZTP deployment: measured 22 min / target <30 min;
-- deployment baseline used in the thesis: up to 120 h;
-- annual economic effect: approximately €422,000.
+Economic reconciliation is now documented in [`../analytics/ECONOMIC_MODEL.md`](../analytics/ECONOMIC_MODEL.md).
 
-Before final publication:
-
-- [ ] link every public value to a calculation/test source that can be published safely;
-- [ ] distinguish measured laboratory values from calculated business-case values;
-- [ ] reconcile ROI, payback and annual-savings assumptions into one financial model;
-- [ ] define the deployment-time baseline explicitly before publishing an acceleration factor;
-- [ ] avoid presenting academic case-study figures as generic Cisco product benchmarks.
+- [x] distinguish measured/simulated technical evidence from thesis-reported values;
+- [x] reconcile OPEX arithmetic using €430,000 and €262,000 annual operating-cost inputs;
+- [x] reconcile annual economic effect using the explicit €168,000 OPEX saving plus €247,000 avoided-loss assumption;
+- [x] define one public ROI formula and calculate the resulting range;
+- [x] define one public simple-payback calculation and calculate the resulting range;
+- [x] retain €422,000/year, 28% ROI and 1.4-year payback only as legacy thesis-reported values;
+- [ ] define the deployment-time baseline explicitly before publishing any deployment acceleration factor;
+- [x] avoid presenting academic case-study figures as generic Cisco product benchmarks.
 
 ## 6. Presentation publication
 
@@ -76,16 +69,14 @@ Recommended public structure:
 docs/
 └── presentation/
     ├── Thesis_Defense_Presentation.pdf
-    ├── Thesis_Defense_Presentation.odp
     └── README.md
 ```
 
-- [ ] Do **not** publish the full thesis PDF, source document or complete thesis text.
-- [ ] Use the private thesis only to verify the repository documentation and evidence.
-- [ ] Use ASCII/English file names for public GitHub paths.
-- [ ] Keep the editable presentation source (`.odp`) when useful.
-- [ ] Add a PDF presentation so it can be opened easily in a browser.
-- [ ] Remove broken placeholders, numbering artifacts and internal editing marks from the public presentation.
+- [x] Do **not** publish the full thesis PDF, source document or complete thesis text.
+- [x] Use the private thesis only to verify repository documentation and evidence.
+- [x] Remove the old oversized presentation PPTX from the cleaned public structure.
+- [ ] Add the reviewed PDF presentation through a binary-safe upload path.
+- [ ] Remove broken placeholders, numbering artifacts and internal editing marks from the public presentation if editing is performed before upload.
 
 ## 7. README / portfolio quality
 
@@ -94,9 +85,9 @@ docs/
 - [x] Explain repository directories.
 - [x] Add responsible-use and proprietary-image notice.
 - [x] State that the full thesis is not part of the public repository.
-- [ ] Add screenshots of key verification results.
-- [ ] Add a final reproduction guide once configs are reconciled.
-- [ ] Add a short section describing limitations of the virtual lab.
+- [x] Document the reconciled economic model and distinguish legacy thesis values.
+- [x] Add a short section describing limitations of the virtual lab.
+- [ ] Complete a final link/content review before release.
 
 ## 8. Optional engineering improvements
 
@@ -106,17 +97,17 @@ These are useful portfolio enhancements but should not be presented as defended 
 - [ ] configuration consistency checker;
 - [ ] GitHub Actions validation for Markdown/XML/secrets;
 - [ ] Ansible-based configuration/verification helpers;
-- [ ] machine-readable inventory (`inventory.yaml`).
+- [x] machine-readable inventory (`inventory.yaml`).
 
 ## 9. Final release
 
 Before creating `v1.0`:
 
-- [ ] no thesis PDF/full text in the repository;
-- [ ] no credentials or sensitive material;
-- [ ] one consistent topology;
+- [x] no thesis PDF/full text in the repository;
+- [x] no known credential hashes or secrets in the public `.unl`/canonical configuration baseline;
+- [x] one documented public topology baseline;
 - [ ] public presentation reviewed and present;
-- [ ] claims traceable to publishable evidence;
-- [ ] all links in README work;
-- [ ] repository description matches actual content;
+- [x] economic claims traceable to the reconciled model or explicitly labeled legacy/thesis-reported;
+- [ ] all links and rendered Markdown reviewed;
+- [ ] repository description matches actual final content;
 - [ ] tag the reviewed state as `v1.0-thesis-portfolio`.
