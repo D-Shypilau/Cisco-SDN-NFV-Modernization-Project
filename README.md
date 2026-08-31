@@ -3,49 +3,40 @@
 **Bachelor Thesis Engineering Project / Выпускной инженерный проект**  
 **Research of SDN & NFV IT Technologies in Cisco Corporate Networks**
 
-A portfolio-oriented case study of enterprise network modernization using **Cisco SD-WAN**, **software-defined networking (SDN)**, **network function virtualization (NFV)**, and an **EVE-NG digital twin**.
+A portfolio-oriented enterprise network modernization case study built around **Cisco SD-WAN**, **SDN**, **NFV**, logical simulation, and an **EVE-NG digital twin**.
 
-> The repository publishes the engineering artifacts of the project: architecture, laboratory topology, configurations, verification material, analysis and defense presentation. **The full bachelor thesis text/PDF is intentionally not published here.**
+> This public repository contains the engineering artifacts of the project. **The full bachelor thesis text/PDF is intentionally private and is not published here.**
 
 ## Project Goal
 
-The project develops and evaluates a modernization model for a geographically distributed enterprise network that is difficult to operate with a traditional device-by-device CLI approach.
+The project evaluates how a geographically distributed enterprise network can move away from device-by-device CLI administration toward centralized policy, virtualization and automated WAN operations.
 
-The work focuses on five stages:
+The engineering workflow is:
 
-1. audit the existing network and identify operational weaknesses;
-2. study SDN and NFV architectural principles;
-3. design a target Cisco-based network model;
-4. validate the proposed architecture using logical simulation and EVE-NG;
-5. evaluate technical and economic efficiency.
+1. identify operational and architectural weaknesses;
+2. design a Cisco-based SDN/NFV target architecture;
+3. validate addressing, routing, segmentation and resiliency concepts;
+4. build a practical Cisco SD-WAN laboratory in EVE-NG;
+5. compare the proposed approach using technical and economic KPIs.
 
 ## Architecture
 
-The case study models four key European locations:
+The academic case study focuses on four key European locations:
 
-- **DE-FRA — Frankfurt:** core and management/control infrastructure;
-- **PL-WAR — Warsaw:** branch office;
-- **ES-MAD — Madrid:** branch/regional site;
-- **ES-SEV — Sevilla:** warehouse and WMS-related segment.
+- **DE-FRA - Frankfurt:** core and management/control infrastructure;
+- **PL-WAR - Warsaw:** branch office;
+- **ES-MAD - Madrid:** regional site;
+- **ES-SEV - Sevilla:** warehouse / WMS scenario.
 
-The exported EVE-NG laboratory includes Cisco SD-WAN components and virtual network/security functions such as **vManage**, **vSmart**, **vBond**, **vEdge**, and **ASAv**.
+The exported EVE-NG snapshot contains Cisco SD-WAN/Viptela control components, WAN Edge nodes, an ASAv security VNF, ISP/underlay simulation and endpoint nodes.
 
-![EVE-NG network topology](./NetCore_SDN_Project/topology/EVE.png)
-
-## Technology Areas
-
-- **SDN:** centralized policy and reduced dependence on per-device CLI administration;
-- **Cisco SD-WAN / Viptela:** management, control and orchestration planes, WAN Edge connectivity and policy distribution;
-- **NFV:** virtualization of routing and security functions;
-- **EVE-NG:** virtual validation environment used as a digital twin of the implemented lab segment;
-- **Security:** segmentation, firewalling and Zero Trust concepts studied in the project;
-- **Business analysis:** assessment of OPEX, ROI, payback period and downtime impact.
+![EVE-NG network topology](./lab/eve-ng/topology.png)
 
 ## Design vs. Implementation
 
-The academic project is broader than the exported EVE-NG snapshot. Technologies such as Cisco DNA Center / Catalyst Center, Cisco ISE, SGT-based microsegmentation, ENCS/NFVIS, NETCONF/YANG and some Hybrid-WAN scenarios are part of the target design and research scope.
+The defended project is broader than the exported EVE-NG snapshot. Cisco Catalyst Center/DNA Center, Cisco ISE, SGT-based microsegmentation, ENCS/NFVIS, NETCONF/YANG, ZTP and Hybrid-WAN concepts are part of the wider design and research scope.
 
-The public repository distinguishes between:
+The public repository therefore uses four evidence levels:
 
 ```text
 Designed / researched
@@ -57,105 +48,132 @@ Implemented in EVE-NG
 Measured / evidenced
 ```
 
-See [`docs/IMPLEMENTATION_STATUS.md`](./docs/IMPLEMENTATION_STATUS.md) for the current implementation and evidence status.
+See [`docs/IMPLEMENTATION_STATUS.md`](./docs/IMPLEMENTATION_STATUS.md) for the current technical boundary.
 
 ## Reported Project Results
 
-The defense materials report the following academic case-study outcomes:
+The defense materials report these academic case-study values:
 
+- **SD-WAN failover:** ~850 ms;
+- **ZTP onboarding:** 22 min measured / target <30 min;
+- **security isolation scenario:** 3.8 s;
+- **OPEX reduction:** ~40%;
 - **ROI:** 28%;
 - **payback period:** 1.4 years;
-- **OPEX reduction:** approximately 40%;
-- **SD-WAN failover result:** approximately 850 ms;
-- **ZTP onboarding:** measured 22 minutes, with a project target below 30 minutes;
-- **security isolation:** 3.8 seconds in the reported test scenario;
-- **estimated annual economic effect:** approximately €422,000.
+- **estimated annual economic effect:** ~€422,000.
 
-These values belong to the academic case study. Before the final portfolio release, public claims are being reconciled with reproducible laboratory evidence and a single consistent financial model. They must not be interpreted as generic Cisco product benchmarks.
+These are project-specific thesis results, not generic Cisco benchmarks. Before the final tagged portfolio release, every public headline value must either be linked to publishable evidence or clearly marked as a thesis-derived case-study result.
 
-## Repository Contents
+## Repository Structure
 
 ```text
 Cisco-SDN-NFV-Modernization-Project/
 ├── README.md
 ├── LICENSE
-├── PUBLICATION_CHECKLIST.md
+├── analytics/
+│   ├── README.md
+│   └── case-study/
+├── configs/
+│   ├── README.md
+│   └── snapshots/
 ├── docs/
-│   └── IMPLEMENTATION_STATUS.md
-└── NetCore_SDN_Project/
-    ├── analytics/       # assessment, verification and efficiency reports
-    ├── configs/         # SD-WAN configuration snapshots
-    ├── presentation/    # defense presentation
-    └── topology/        # EVE-NG lab, topology image and node description
+│   ├── IMPLEMENTATION_STATUS.md
+│   ├── PUBLICATION_CHECKLIST.md
+│   └── presentation/
+│       ├── README.md
+│       └── Thesis_Defense_Presentation.pdf
+├── evidence/
+│   └── README.md
+└── lab/
+    └── eve-ng/
+        ├── README.md
+        ├── NetCore_SDN_Project.unl
+        └── topology.png
 ```
 
-### `analytics/`
+### `lab/eve-ng/`
 
-Analytical and verification materials used to support the engineering case study.
+The current EVE-NG laboratory snapshot and its topology image. Cisco appliance images are not distributed.
 
-### `configs/`
+### `configs/snapshots/`
 
-Configuration snapshots for SD-WAN control components and branch WAN Edge devices.
+Original text configuration exports preserved for analysis. They are explicitly marked as snapshots because the audit found parameter differences between some text exports and the `.unl` startup state.
 
-### `topology/`
+### `evidence/`
 
-The EVE-NG `.unl` laboratory, topology diagram and node description.
+The destination for reproducible command output, failover measurements, control-plane state, connectivity checks, security validation and ZTP evidence.
 
-### `presentation/`
+### `analytics/case-study/`
 
-The public defense presentation associated with the project.
+Supporting academic case-study documents for infrastructure assessment, verification and efficiency analysis.
+
+### `docs/presentation/`
+
+Browser-friendly PDF of the defense presentation. The full thesis document is not included.
 
 ## Reproducing the Lab
 
-The repository provides the EVE-NG topology definition and configuration material, but **Cisco virtual appliance images are not distributed in this repository**. A user reproducing the lab must provide appropriately licensed Cisco images in their own EVE-NG environment.
+Cisco virtual appliance images are proprietary and intentionally absent. A user reproducing this project must supply appropriately licensed images in their own EVE-NG environment.
 
-Recommended validation workflow:
+Recommended validation flow:
 
 ```text
-Import EVE-NG topology
+Import .unl topology
         ↓
 Provide licensed Cisco images
         ↓
-Start infrastructure and SD-WAN nodes
+Start underlay and SD-WAN components
         ↓
-Verify control connections and OMP
+Verify control connections / OMP / BFD
         ↓
-Verify branch connectivity and policies
+Verify branch reachability and policies
         ↓
-Run failure / recovery tests
+Run controlled failure tests
         ↓
-Compare observations with published evidence
+Save raw evidence in evidence/
 ```
+
+Do not treat the configuration snapshots as a ready-to-deploy canonical configuration set until the reconciliation items in `docs/IMPLEMENTATION_STATUS.md` are closed.
+
+## Public Presentation
+
+The defense presentation is available here:
+
+[`docs/presentation/Thesis_Defense_Presentation.pdf`](./docs/presentation/Thesis_Defense_Presentation.pdf)
 
 ## Publication Scope
 
-The **full bachelor thesis document, thesis PDF and complete thesis text are private and are not part of this public repository**.
+**Not published:**
 
-The private thesis is used only as a source for checking that the public architecture, explanations, metrics and presentation are consistent with the defended project.
+- full bachelor thesis PDF;
+- thesis ODT/DOCX source;
+- complete thesis text;
+- Cisco proprietary software images;
+- credentials, private keys or secrets.
 
-The public repository is intended to contain only material appropriate for an engineering portfolio:
+**Published:**
 
-- architecture and diagrams;
-- laboratory topology;
-- sanitized configurations;
-- reproducible verification evidence;
-- technical/economic summaries;
+- architecture and lab topology;
+- EVE-NG definition;
+- sanitized configuration snapshots;
+- reproducible evidence as it is validated;
+- academic case-study summaries;
 - defense presentation;
 - implementation notes and limitations.
 
-## Publication Status
+## Status
 
-This repository is being prepared as a clean public portfolio version of the bachelor thesis engineering project. Documentation, exported configurations and the EVE-NG snapshot are being reconciled so that naming, site IDs, software versions and architecture descriptions refer to the same laboratory state.
+The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The main priorities are one consistent topology, sanitized configs, evidence traceability and consistent technical/economic claims.
 
 ## Responsible Use
 
-This repository is intended for **education, research and authorized laboratory use**. Cisco software images and other proprietary software are intentionally not included.
+For education, research and authorized laboratory use only. Cisco names and trademarks belong to their respective owners. Proprietary Cisco software is not distributed here.
 
 ## Author
 
 **Dzmitry Shypilau**  
-Bachelor Thesis Engineering Project: *Research of SDN & NFV IT Technologies in Cisco Corporate Networks*
+*Research of SDN & NFV IT Technologies in Cisco Corporate Networks*
 
 ## License
 
-The repository source materials are published under the [MIT License](./LICENSE), except for third-party product names, trademarks and proprietary software referenced by the project.
+Repository-authored source materials are published under the [MIT License](./LICENSE), excluding third-party trademarks and proprietary software.
