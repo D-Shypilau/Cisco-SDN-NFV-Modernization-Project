@@ -4,11 +4,11 @@ This review records the final repository check for branch `portfolio-cleanup` be
 
 ## Review result
 
-**Status: PASS WITH ONE PUBLICATION BLOCKER**
+**Status: PASS — READY FOR EXPLICIT USER APPROVAL**
 
-The cleaned engineering content is internally consistent enough for review. The remaining publication blocker is the final presentation PDF: it has been prepared and visually reviewed locally, but is not yet committed because the available repository write path does not support a verified binary-safe upload.
+The cleaned engineering content is internally consistent enough for final review. The previously remaining publication blocker — the final presentation PDF — has now been uploaded to GitHub through the normal web interface and binary-verified against the locally reviewed file.
 
-PR #1 must remain **Draft** and unmerged until the presentation upload decision is completed.
+PR #1 remains **Draft** and unmerged only because moving it out of Draft / merging requires the user's explicit approval.
 
 ## Branch / merge baseline
 
@@ -16,7 +16,6 @@ At review time:
 
 - base branch: `main`;
 - working branch: `portfolio-cleanup`;
-- branch relationship: `portfolio-cleanup` is ahead of `main` and not behind it;
 - no merge has been performed;
 - no final release tag has been created.
 
@@ -104,39 +103,41 @@ Legacy thesis values `€422,000/year`, `28% ROI` and `1.4-year payback` are ret
 
 Historical project software is documented rather than presented as current production guidance. `docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md` records the recovered Cisco SD-WAN 20.6.2 and ASAv 9.9(1) context.
 
-The repository intentionally keeps **Cisco DNA Center** terminology for the defended academic project. Current naming may be mentioned for context, but the public project description does not need to replace `DNA Center`.
+The repository intentionally keeps **Cisco DNA Center** terminology for the defended academic project.
 
 ## Presentation review
 
-A final public deck has been prepared locally as:
+The final public deck is published at:
 
 ```text
-NetCore_SDN_NFV_Public_GitHub_Final.pdf
+docs/presentation/NetCore_SDN_NFV_Public_GitHub_Final.pdf
 ```
 
-Local validation completed:
+Validation completed:
 
-- PDF format: valid PDF 1.7;
+- PDF format: PDF 1.7;
 - pages: 11;
-- size: approximately 2.7 MB;
-- all pages rendered for visual inspection;
-- visible placeholder/page-number artifacts corrected;
-- economic KPI slide aligned with the reconciled model;
-- thesis-only technical metrics labeled appropriately;
-- Cisco DNA Center terminology retained.
+- GitHub size: `2,773,845` bytes;
+- Git blob SHA-1: `66d3cc13f194733969b9760fad43fdee958b41fd`;
+- local reviewed file has the same size and Git blob SHA-1;
+- all pages were rendered for visual inspection before upload;
+- visible placeholder/page-number artifacts were corrected;
+- economic KPI slide is aligned with the reconciled model;
+- thesis-only technical metrics are labeled appropriately;
+- Cisco DNA Center terminology is retained.
 
-The PDF is **not yet in the repository**. Do not substitute a truncated base64/text upload for a binary-safe file transfer.
+Because Git computes the blob hash from the exact file bytes, the matching Git blob SHA-1 proves the GitHub PDF is byte-for-byte identical to the locally reviewed final PDF.
 
 ## Remaining release items
 
-The following are not hidden defects; they are explicit remaining limitations or publication tasks:
+The only release-gating actions left are procedural:
 
-1. upload the reviewed presentation PDF through a verified binary-safe GitHub path;
-2. optionally recover the exact historical EVE-NG edition if a reliable source becomes available;
-3. keep runtime-evidence items pending unless the lab becomes executable;
-4. keep PR #1 Draft until the final publication decision;
-5. merge and create `v1.0-thesis-portfolio` only after explicit approval.
+1. explicit user approval to move PR #1 out of Draft;
+2. explicit user approval to merge `portfolio-cleanup` into `main`;
+3. create `v1.0-thesis-portfolio` after the reviewed merge.
+
+Optional / future items such as exact EVE-NG edition recovery and genuine runtime evidence remain documented limitations, not merge blockers.
 
 ## Recommendation
 
-Do **not** merge yet. Once the final PDF is present and its GitHub blob size/openability are verified, perform one short final check of the presentation link and then the branch can be considered ready for the user's explicit merge approval.
+The repository is ready for the user's explicit approval to move PR #1 from Draft to Ready for review. Do not merge automatically; merge only after a separate explicit approval.
