@@ -1,0 +1,26 @@
+! vBond Orchestrator - NetCore Solutions Project
+! Role: Authentication and Connectivity Plane
+! Location: Frankfurt Data Center
+
+system
+ host-name             vBond-FRA-01
+ system-ip             1.1.1.2
+ site-id               100
+ organization-name     "NetCore-Solutions-GmbH"
+ vbond                 1.1.1.2 local
+!
+vpn 0
+ interface eth0
+  ! WAN IP according to infrastructure table
+  ip address 10.255.0.6/24 
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.255.0.5
+!
+vpn 512
+ interface eth1
+  ip address 192.168.1.20/24
+  no shutdown
+!
+config-transaction
+commit
