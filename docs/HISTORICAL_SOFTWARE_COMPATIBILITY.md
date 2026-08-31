@@ -48,7 +48,7 @@ Official reference:
 
 ## Cisco DNA Center naming
 
-The academic design uses the name **Cisco DNA Center**. Cisco later renamed the platform **Cisco Catalyst Center**; Cisco states that the name change was introduced in the Catalyst Center 2.3.7.x documentation while retaining the platform's capability/functionality context.
+The academic design uses the name **Cisco DNA Center**. Cisco documents the name change from Cisco DNA Center to **Catalyst Center** as a new/changed feature in **Catalyst Center 2.3.7.4**, while stating that the capability and functionality remain the same in that branding transition.
 
 For historical sections, `Cisco DNA Center` is preserved. For current terminology, the repository uses `Cisco Catalyst Center (formerly Cisco DNA Center)` where useful.
 
