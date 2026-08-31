@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<lab name="VKR2_0303_1773174064924" version="1" scripttimeout="300" lock="0">
+  <topology>
+    <nodes>
+      <node id="2" name="DE-FRA-CORE-01" type="qemu" template="viosl2" image="viosl2-adventerprisek9-m.ssa.high_iron_20200929" ethernet="16" delay="0" icon="Switch-2D-L3-Generic-S.svg" config="0" left="264" top="384" console="telnet" cpu="1" cpulimit="0" ram="512" uuid="03e8d87d-0362-4c15-881b-e145e3a24f98" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc -cpu host" qemu_version="5.2.0" qemu_arch="x86_64">
+        <interface id="0" name="Gi0/0" type="ethernet" network_id="4" />
+        <interface id="1" name="Gi0/1" type="ethernet" network_id="5" />
+        <interface id="2" name="Gi0/2" type="ethernet" network_id="6" />
+        <interface id="4" name="Gi1/0" type="ethernet" network_id="8" />
+      </node>
+      <node id="3" name="ES-SEV-WHR-GW-01" type="qemu" template="vtedge" image="vtedge-20.6.2" ethernet="5" delay="0" icon="SDWAN-2D-vEdge-S.svg" config="1" left="567" top="297" console="telnet" cpu="1" cpulimit="0" ram="1024" uuid="d70777ce-2aa4-40de-b8b8-f3671c33c183" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="1" name="G0/0" type="ethernet" network_id="13" />
+        <interface id="2" name="G0/1" type="ethernet" network_id="11" />
+        <interface id="3" name="G0/2" type="ethernet" network_id="12" />
+        <interface id="4" name="G0/3" type="ethernet" network_id="1" />
+      </node>
+      <node id="4" name="DE-FRA-FW-01" type="qemu" template="asav" image="asav-9.9.1" ethernet="8" delay="0" icon="Firewall-2D-ASA-S.svg" config="1" left="222" top="258" console="telnet" cpu="1" cpulimit="0" ram="2048" uuid="3bcb4f84-46a7-4a91-aa62-ec1571b9c2cd" qemu_options="-machine type=pc-1.0,accel=kvm -serial mon:stdio -nographic -no-user-config -nodefaults -display none -vga std -rtc base=utc" qemu_version="5.2.0" qemu_arch="x86_64">
+        <interface id="1" name="Gi0/0" type="ethernet" network_id="2" />
+        <interface id="2" name="Gi0/1" type="ethernet" network_id="8" />
+        <interface id="3" name="Gi0/2" type="ethernet" network_id="1" />
+      </node>
+      <node id="6" name="ES-SEV-VPC-GUEST" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="711" top="366">
+        <interface id="0" name="eth0" type="ethernet" network_id="12" />
+      </node>
+      <node id="9" name="DE-FRA-MGMT-01" type="qemu" template="vtmgmt" image="vtmgmt-20.6.2" ethernet="2" delay="0" icon="SDWAN-2D-Manager-S.svg" config="0" left="78" top="408" console="telnet" cpu="2" cpulimit="0" ram="8144" uuid="a8284f16-f91b-4b89-915f-a8c748b11131" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="0" name="eth0" type="ethernet" network_id="4" />
+      </node>
+      <node id="1" name="INTERNET-ISP" type="qemu" template="vios" image="vios-adventerprisek9-m.SPA.159-3.M4" ethernet="4" delay="0" icon="Router-2D-Gen-White-S.svg" config="1" left="288" top="123" console="telnet" cpu="1" cpulimit="0" ram="512" uuid="3432a590-48ed-4c12-a70b-ea4753ab3c7d" qemu_options="-machine type=pc,accel=kvm -serial mon:stdio -nographic -no-user-config -nodefaults -rtc base=utc -cpu host" qemu_version="2.4.0" qemu_arch="x86_64">
+        <interface id="0" name="Gi0/0" type="ethernet" network_id="2" />
+        <interface id="1" name="Gi0/1" type="ethernet" network_id="3" />
+        <interface id="2" name="Gi0/2" type="ethernet" network_id="7" />
+        <interface id="3" name="Gi0/3" type="ethernet" network_id="13" />
+      </node>
+      <node id="12" name="DE-FRA-SMART-01" type="qemu" template="vtsmart" image="vtsmart-20.6.2" ethernet="2" delay="0" icon="SDWAN-2D-Controller-S.svg" config="0" left="174" top="564" console="telnet" cpu="1" cpulimit="0" ram="1024" uuid="4b9d8325-1fab-467b-9655-57e702d5820f" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="0" name="eth0" type="ethernet" network_id="5" />
+      </node>
+      <node id="10" name="vBond" type="qemu" template="vtbond" image="vtbond-20.6.2" ethernet="2" delay="0" icon="SDWAN-2D-Validator-S.svg" config="1" left="123" top="273" console="telnet" cpu="1" cpulimit="0" ram="1024" uuid="ff47c14a-7eeb-418d-a3b9-7884aee6db2d" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="1" name="ge0/0" type="ethernet" network_id="6" />
+      </node>
+      <node id="5" name="ES-SEV-VPC-WMS" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="591" top="465">
+        <interface id="0" name="eth0" type="ethernet" network_id="11" />
+      </node>
+      <node id="7" name="PL-WAR-GW-01" type="qemu" template="vtedge" image="vtedge-20.6.2" ethernet="5" delay="0" icon="SDWAN-2D-vEdge-S.svg" config="1" left="579" top="45" console="telnet" cpu="1" cpulimit="0" ram="1024" uuid="21a1f6d3-89ba-45f0-b011-09b203a89a85" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="2.12.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="1" name="G0/0" type="ethernet" network_id="3" />
+        <interface id="2" name="G0/1" type="ethernet" network_id="9" />
+        <interface id="3" name="G0/2" type="ethernet" network_id="1" />
+      </node>
+      <node id="8" name="ES-MAD-GW-01" type="qemu" template="vtedge" image="vtedge-20.6.2" ethernet="5" delay="0" icon="SDWAN-2D-vEdge-S.svg" config="1" left="630" top="180" console="telnet" cpu="1" cpulimit="0" ram="1024" uuid="116f25d4-ee56-4084-91de-fbb857242c98" qemu_options="-machine type=pc,accel=kvm -cpu host -vga std -usbdevice tablet -boot order=dc -cpu host" qemu_version="5.2.0" qemu_arch="x86_64" qemu_nic="virtio-net-pci">
+        <interface id="1" name="G0/0" type="ethernet" network_id="7" />
+        <interface id="2" name="G0/1" type="ethernet" network_id="10" />
+        <interface id="3" name="G0/2" type="ethernet" network_id="1" />
+      </node>
+      <node id="11" name="PL-WAR-VPC-01" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="728" top="101">
+        <interface id="0" name="eth0" type="ethernet" network_id="9" />
+      </node>
+      <node id="13" name="ES-MAD-VPC-01" type="vpcs" template="vpcs" image="" ethernet="1" delay="0" icon="PC-2D-Desktop-Generic-S.svg" config="0" left="762" top="225">
+        <interface id="0" name="eth0" type="ethernet" network_id="10" />
+      </node>
+    </nodes>
+    <networks>
+      <network id="1" type="pnet0" name="Net" left="390" top="303" visibility="1" icon="Cloud-2D-Blue-S.svg" />
+      <network id="3" type="bridge" name="Net-PL-WAR-GW-01iface_1" left="639" top="85" visibility="0" icon="lan.png" />
+      <network id="7" type="bridge" name="Net-ES-MAD-GW-01iface_1" left="480" top="229" visibility="0" icon="lan.png" />
+      <network id="9" type="bridge" name="Net-PL-WAR-GW-01iface_2" left="639" top="85" visibility="0" icon="lan.png" />
+      <network id="10" type="bridge" name="Net-ES-MAD-GW-01iface_2" left="480" top="229" visibility="0" icon="lan.png" />
+      <network id="11" type="bridge" name="Net-ES-SEV-WHR-GW-01iface_2" left="591" top="310" visibility="0" icon="lan.png" />
+      <network id="12" type="bridge" name="Net-ES-SEV-WHR-GW-01iface_3" left="591" top="310" visibility="0" icon="lan.png" />
+      <network id="2" type="bridge" name="Net-DE-FRA-FW-01iface_1" left="409" top="263" visibility="0" icon="lan.png" />
+      <network id="8" type="bridge" name="Net-DE-FRA-FW-01iface_2" left="544" top="274" visibility="0" icon="lan.png" />
+      <network id="6" type="bridge" name="Net-vBondiface_1" left="183" top="313" visibility="0" icon="lan.png" />
+      <network id="4" type="bridge" name="Net-DE-FRA-CORE-01iface_0" left="324" top="424" visibility="0" icon="lan.png" />
+      <network id="5" type="bridge" name="Net-DE-FRA-CORE-01iface_1" left="324" top="424" visibility="0" icon="lan.png" />
+      <network id="13" type="bridge" name="Net-INTERNET-ISPiface_3" left="348" top="163" visibility="0" icon="lan.png" />
+    </networks>
+  </topology>
+  <objects>
+    <configs>
+      <config id="3">c3lzdGVtCiBob3N0LW5hbWUgRVMtU0VWLVdIUi1HVy0wMQogc3lzdGVtLWlwIDEuMS4xLjEzCiBzaXRlLWlkIDQwMAogb3JnYW5pemF0aW9uLW5hbWUgTmV0Q29yZV9Tb2x1dGlvbnNfMjAyNgogdmJvbmQgMTkyLjE2OC4xLjMKIQpvbXAKIG5vIHNodXRkb3duCiBncmFjZWZ1bC1yZXN0YXJ0CiBhZHZlcnRpc2UgY29ubmVjdGVkCiBhZHZlcnRpc2Ugc3RhdGljCiEKc2VjdXJpdHkKIGlwc2VjCiAgaW50ZWdyaXR5LXR5cGUgaXAtdWRwLWVzcCBlc3AKICEKIQp2cG4gMAogaW50ZXJmYWNlIGdlMC8wCiAgaXAgYWRkcmVzcyAxMC4yNTUuMC4xNC8zMAogIHR1bm5lbC1pbnRlcmZhY2UKICAgZW5jYXBzdWxhdGlvbiBpcHNlYwogICBjb2xvciBwdWJsaWMtaW50ZXJuZXQKICAgYWxsb3ctc2VydmljZSBkaGNwCiAgIGFsbG93LXNlcnZpY2UgZG5zCiAgIGFsbG93LXNlcnZpY2UgaWNtcAogICBhbGxvdy1zZXJ2aWNlIGh0dHBzCiAgIQogIG5vIHNodXRkb3duCiAhCiBpcCByb3V0ZSAwLjAuMC4wLzAgMTAuMjU1LjAuMTMKIQp2cG4gNTEyCiBpbnRlcmZhY2UgZXRoMAogIGlwIGRoY3AtY2xpZW50CiAgaXB2NiBkaGNwLWNsaWVudAogIG5vIHNodXRkb3duCiAhCiEK</config>
+      <config id="4">QVNBIFZlcnNpb24gOS45KDEpCiEKaG9zdG5hbWUgREUtRlJBLUZXLTAxCiEKaW50ZXJmYWNlIEdpZ2FiaXRFdGhlcm5ldDAvMAogbmFtZWlmIG91dHNpZGUKIHNlY3VyaXR5LWxldmVsIDAKIGlwIGFkZHJlc3MgMTAuMjU1LjAuMSAyNTUuMjU1LjI1NS4yNTIKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEdpZ2FiaXRFdGhlcm5ldDAvMQogbmFtZWlmIGluc2lkZQogc2VjdXJpdHktbGV2ZWwgMTAwCiBpcCBhZGRyZXNzIDEwLjI1NS4xLjEgMjU1LjI1NS4yNTUuMjUyCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBHaWdhYml0RXRoZXJuZXQwLzIKIG5hbWVpZiBtcGxzX2Nsb3VkCiBzZWN1cml0eS1sZXZlbCA1MAogaXAgYWRkcmVzcyAxNzIuMTYuMC4xIDI1NS4yNTUuMjU1LjAKIG5vIHNodXRkb3duCiEKcm91dGUgb3V0c2lkZSAwLjAuMC4wIDAuMC4wLjAgMTAuMjU1LjAuMiAxCiEKZW5kCg==</config>
+      <config id="1">dmVyc2lvbiAxNS45Cmhvc3RuYW1lIElOVEVSTkVULUlTUAohCmludGVyZmFjZSBHaWdhYml0RXRoZXJuZXQwLzAKIGRlc2NyaXB0aW9uIFRvX0RFLUZSQS1GVy0wMQogaXAgYWRkcmVzcyAxMC4yNTUuMC4yIDI1NS4yNTUuMjU1LjI1Mgogbm8gc2h1dGRvd24KIQppbnRlcmZhY2UgR2lnYWJpdEV0aGVybmV0MC8xCiBkZXNjcmlwdGlvbiBUb19QTC1XQVItR1ctMDEKIGlwIGFkZHJlc3MgMTAuMjU1LjAuNSAyNTUuMjU1LjI1NS4yNTIKIG5vIHNodXRkb3duCiEKaW50ZXJmYWNlIEdpZ2FiaXRFdGhlcm5ldDAvMgogZGVzY3JpcHRpb24gVG9fRVMtTUFELUdXLTAxCiBpcCBhZGRyZXNzIDEwLjI1NS4wLjkgMjU1LjI1NS4yNTUuMjUyCiBubyBzaHV0ZG93bgohCmludGVyZmFjZSBHaWdhYml0RXRoZXJuZXQwLzMKIGRlc2NyaXB0aW9uIFRvX0VTLVNFVi1XSFItR1ctMDEKIGlwIGFkZHJlc3MgMTAuMjU1LjAuMTMgMjU1LjI1NS4yNTUuMjUyCiBubyBzaHV0ZG93bgohCmlwIHJvdXRlIDE5Mi4xNjguMS4wIDI1NS4yNTUuMjU1LjAgMTAuMjU1LjAuMQohCmVuZAo=</config>
+      <config id="10">Cg==</config>
+      <config id="7">c3lzdGVtCiBob3N0LW5hbWUgUEwtV0FSLUdXLTAxCiBzeXN0ZW0taXAgMS4xLjEuNQogc2l0ZS1pZCAyMDAKIG9yZ2FuaXphdGlvbi1uYW1lIE5ldENvcmVfU29sdXRpb25zXzIwMjYKIHZib25kIDE5Mi4xNjguMS4zCiEKb21wCiBubyBzaHV0ZG93bgogZ3JhY2VmdWwtcmVzdGFydAogYWR2ZXJ0aXNlIGNvbm5lY3RlZAogYWR2ZXJ0aXNlIHN0YXRpYwohCnNlY3VyaXR5CiBpcHNlYwogIGludGVncml0eS10eXBlIGlwLXVkcC1lc3AgZXNwCiAhCiEKdnBuIDAKIGludGVyZmFjZSBnZTAvMAogIGlwIGFkZHJlc3MgMTAuMjU1LjAuNi8zMAogIHR1bm5lbC1pbnRlcmZhY2UKICAgZW5jYXBzdWxhdGlvbiBpcHNlYwogICBjb2xvciBtcGxzCiAgIGFsbG93LXNlcnZpY2UgZGhjcAogICBhbGxvdy1zZXJ2aWNlIGRucwogICBhbGxvdy1zZXJ2aWNlIGljbXAKICAgYWxsb3ctc2VydmljZSBodHRwcwogICEKICBubyBzaHV0ZG93bgogIQogaXAgcm91dGUgMC4wLjAuMC8wIDEwLjI1NS4wLjUKIQp2cG4gNTEyCiBpbnRlcmZhY2UgZXRoMAogIGlwIGRoY3AtY2xpZW50CiAgaXB2NiBkaGNwLWNsaWVudAogIG5vIHNodXRkb3duCiAhCiEK</config>
+      <config id="8">c3lzdGVtCiBob3N0LW5hbWUgRVMtTUFELUdXLTAxCiBzeXN0ZW0taXAgMS4xLjEuOQogc2l0ZS1pZCAzMDAKIG9yZ2FuaXphdGlvbi1uYW1lIE5ldENvcmVfU29sdXRpb25zXzIwMjYKIHZib25kIDE5Mi4xNjguMS4zCiEKb21wCiBubyBzaHV0ZG93bgogZ3JhY2VmdWwtcmVzdGFydAogYWR2ZXJ0aXNlIGNvbm5lY3RlZAogYWR2ZXJ0aXNlIHN0YXRpYwohCnNlY3VyaXR5CiBpcHNlYwogIGludGVncml0eS10eXBlIGlwLXVkcC1lc3AgZXNwCiAhCiEKdnBuIDAKIGludGVyZmFjZSBnZTAvMAogIGlwIGFkZHJlc3MgMTAuMjU1LjAuMTAvMzAKICB0dW5uZWwtaW50ZXJmYWNlCiAgIGVuY2Fwc3VsYXRpb24gaXBzZWMKICAgY29sb3IgYml6LWludGVybmV0CiAgIGFsbG93LXNlcnZpY2UgZGhjcAogICBhbGxvdy1zZXJ2aWNlIGRucwogICBhbGxvdy1zZXJ2aWNlIGljbXAKICAgYWxsb3ctc2VydmljZSBodHRwcwogICEKICBubyBzaHV0ZG93bgogIQogaXAgcm91dGUgMC4wLjAuMC8wIDEwLjI1NS4wLjkKIQp2cG4gNTEyCiBpbnRlcmZhY2UgZXRoMAogIGlwIGRoY3AtY2xpZW50CiAgaXB2NiBkaGNwLWNsaWVudAogIG5vIHNodXRkb3duCiAhCiEK</config>
+    </configs>
+  </objects>
+</lab>

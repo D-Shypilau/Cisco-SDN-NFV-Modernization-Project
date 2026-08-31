@@ -1,0 +1,28 @@
+! vEdge Warsaw - NetCore Solutions Project
+! Role: Edge Router
+! Location: Warsaw Office (PL-WAR-GW-01)
+
+system
+ host-name             vEdge-WAR-01
+ system-ip             1.1.1.5
+ site-id               200
+ organization-name     "NetCore-Solutions-GmbH"
+ vbond                 1.1.1.2
+!
+vpn 0
+ interface ge0/0
+  ! IP from your Table: PL-WAR-GW-01 link
+  ip address 10.255.0.2/24
+  color public-internet
+  encapsulation ipsec
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.255.0.1
+!
+vpn 1
+ interface ge0/1
+  ip address 10.20.1.1/24
+  no shutdown
+!
+config-transaction
+commit

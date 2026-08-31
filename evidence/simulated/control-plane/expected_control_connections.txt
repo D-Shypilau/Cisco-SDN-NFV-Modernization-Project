@@ -1,0 +1,47 @@
+SIMULATED — NOT CAPTURED FROM A RUNNING LAB
+Status: SIMULATED-PASS
+Purpose: expected healthy SD-WAN control-plane state for the three exported WAN Edge nodes.
+
+Assumed project controller identities:
+- vManage / SD-WAN Manager system-ip: 1.1.1.1
+- vSmart / SD-WAN Controller system-ip: 1.1.1.3
+- vBond / Validator reference: 192.168.1.3
+
+Expected command on each WAN Edge:
+show control connections
+
+=== PL-WAR-GW-01 (system-ip 1.1.1.5 / site-id 200) ===
+PEER TYPE      PEER SYSTEM IP    SITE ID   STATE   TRANSPORT       LOCAL COLOR
+vsmart         1.1.1.3           100       up      dtls            mpls
+vmanage        1.1.1.1           100       up      dtls            mpls
+
+Expected summary:
+control connections total: 2
+control connections up:    2
+control connections down:  0
+
+=== ES-MAD-GW-01 (system-ip 1.1.1.9 / site-id 300) ===
+PEER TYPE      PEER SYSTEM IP    SITE ID   STATE   TRANSPORT       LOCAL COLOR
+vsmart         1.1.1.3           100       up      dtls            biz-internet
+vmanage        1.1.1.1           100       up      dtls            biz-internet
+
+Expected summary:
+control connections total: 2
+control connections up:    2
+control connections down:  0
+
+=== ES-SEV-WHR-GW-01 (system-ip 1.1.1.13 / site-id 400) ===
+PEER TYPE      PEER SYSTEM IP    SITE ID   STATE   TRANSPORT       LOCAL COLOR
+vsmart         1.1.1.3           100       up      dtls            public-internet
+vmanage        1.1.1.1           100       up      dtls            public-internet
+
+Expected summary:
+control connections total: 2
+control connections up:    2
+control connections down:  0
+
+Interpretation:
+If reproduced in a running lab, this would demonstrate that all three exported WAN Edge nodes have active management/control sessions. Validator/vBond is used for orchestration/bootstrap and is not represented here as a permanent Edge control connection.
+
+Important limitation:
+The exported .unl does not contain complete embedded controller startup configurations, so this output is an expected-state model, not captured evidence.

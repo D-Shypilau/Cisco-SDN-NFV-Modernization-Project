@@ -1,0 +1,141 @@
+# Machine-readable inventory for the published sanitized EVE-NG .unl snapshot.
+# This file documents what is actually present in the exported lab.
+# It does not claim that every thesis-level technology is implemented here.
+
+lab:
+  name_in_unl: VKR2_0303_1773174064924
+  reference_file: NetCore_SDN_Project.unl
+  baseline_policy: unl-is-source-of-truth-for-exported-lab
+  sanitized: true
+  sanitization_scope:
+    - embedded local usernames removed
+    - password and enable-password hashes removed
+    - certificates and private keys not included
+    - topology and documented addressing retained
+
+software:
+  sdwan_release: "20.6.2"
+  asav_release: "9.9.1"
+  vios_release: "15.9(3)M4 image family"
+
+nodes:
+  - id: 1
+    hostname: INTERNET-ISP
+    template: vios
+    role: underlay-isp
+
+  - id: 2
+    hostname: DE-FRA-CORE-01
+    template: viosl2
+    role: frankfurt-core
+
+  - id: 3
+    hostname: ES-SEV-WHR-GW-01
+    template: vtedge
+    image: vtedge-20.6.2
+    role: wan-edge
+    site: sevilla
+    embedded_startup_config: sanitized
+    system_ip: 1.1.1.13
+    site_id: 400
+    organization_name: NetCore_Solutions_2026
+    vbond: 192.168.1.3
+    wan:
+      address: 10.255.0.14/30
+      next_hop: 10.255.0.13
+      color: public-internet
+
+  - id: 4
+    hostname: DE-FRA-FW-01
+    template: asav
+    image: asav-9.9.1
+    role: security-vnf
+    embedded_startup_config: sanitized
+
+  - id: 5
+    hostname: ES-SEV-VPC-WMS
+    template: vpcs
+    role: wms-endpoint
+
+  - id: 6
+    hostname: ES-SEV-VPC-GUEST
+    template: vpcs
+    role: guest-endpoint
+
+  - id: 7
+    hostname: PL-WAR-GW-01
+    template: vtedge
+    image: vtedge-20.6.2
+    role: wan-edge
+    site: warsaw
+    embedded_startup_config: sanitized
+    system_ip: 1.1.1.5
+    site_id: 200
+    organization_name: NetCore_Solutions_2026
+    vbond: 192.168.1.3
+    wan:
+      address: 10.255.0.6/30
+      next_hop: 10.255.0.5
+      color: mpls
+
+  - id: 8
+    hostname: ES-MAD-GW-01
+    template: vtedge
+    image: vtedge-20.6.2
+    role: wan-edge
+    site: madrid
+    embedded_startup_config: sanitized
+    system_ip: 1.1.1.9
+    site_id: 300
+    organization_name: NetCore_Solutions_2026
+    vbond: 192.168.1.3
+    wan:
+      address: 10.255.0.10/30
+      next_hop: 10.255.0.9
+      color: biz-internet
+
+  - id: 9
+    hostname: DE-FRA-MGMT-01
+    template: vtmgmt
+    image: vtmgmt-20.6.2
+    role: sdwan-manager
+    embedded_startup_config: false
+
+  - id: 10
+    hostname: vBond
+    template: vtbond
+    image: vtbond-20.6.2
+    role: sdwan-validator
+    embedded_startup_config: incomplete
+
+  - id: 11
+    hostname: PL-WAR-VPC-01
+    template: vpcs
+    role: branch-endpoint
+
+  - id: 12
+    hostname: DE-FRA-SMART-01
+    template: vtsmart
+    image: vtsmart-20.6.2
+    role: sdwan-controller
+    embedded_startup_config: false
+
+  - id: 13
+    hostname: ES-MAD-VPC-01
+    template: vpcs
+    role: branch-endpoint
+
+published_lab_facts:
+  madrid_wan_edges: 1
+  madrid_asav_nodes: 0
+  frankfurt_asav_nodes: 1
+  branch_edges_have_one_visible_isp_transport_each: true
+  catalyst_center_node_present: false
+  ise_node_present: false
+  nfvis_encs_node_present: false
+
+known_reconciliation_items:
+  - text-config snapshots use a different organization name and addressing set
+  - madrid and sevilla site IDs differ in some older documentation/config snapshots
+  - controller startup configs are not fully embedded in the exported .unl
+  - published lab does not currently reproduce a two-transport LTE/5G failover test at Sevilla

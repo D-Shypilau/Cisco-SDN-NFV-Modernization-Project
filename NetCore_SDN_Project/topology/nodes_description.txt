@@ -1,8 +1,0 @@
-Project Topology Description:
-- Core Node (Frankfurt): 1x vManage, 1x vSmart, 1x vBond, 1x vEdge
-- Branch 1 (Warsaw): 1x vEdge (PL-WAR-GW-01)
-- Branch 2 (Madrid): 2x vEdge (ES-MAD-GW-01/02) for High Availability
-- Branch 3 (Sevilla): 1x vEdge (ES-SEV-GW-01)
-- Security: Cisco ASAv integrated at Frankfurt and Madrid sites.
-- Emulation Environment: EVE-NG (Community Edition)
-- Images used: viptela-edge-20.6.3, asav-9.16.1

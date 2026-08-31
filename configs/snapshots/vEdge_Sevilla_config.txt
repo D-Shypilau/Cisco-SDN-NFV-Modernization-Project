@@ -1,0 +1,29 @@
+! vEdge Sevilla - NetCore Solutions Project
+! Role: Edge Router (Warehouse)
+! Location: Sevilla (ES-SEV-GW-01)
+
+system
+ host-name             vEdge-SEV-01
+ system-ip             1.1.1.4
+ site-id               300
+ organization-name     "NetCore-Solutions-GmbH"
+ vbond                 1.1.1.2
+!
+vpn 0
+ interface ge0/0
+  ! IP from your Table: ES-SEV-GW-01 link
+  ip address 10.255.0.18/24
+  color public-internet
+  encapsulation ipsec
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.255.0.17
+!
+vpn 1
+ interface ge0/1
+  ! Subnet 10.30.x.x according to your WMS department table
+  ip address 10.30.1.1/24
+  no shutdown
+!
+config-transaction
+commit

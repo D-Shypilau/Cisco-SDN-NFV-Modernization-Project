@@ -1,0 +1,48 @@
+! vSmart Controller Configuration - NetCore Solutions Project
+! Role: Control Plane (Routing and Policy Engine)
+! Location: Frankfurt Data Center (DE-FRA-CORE)
+
+system
+ host-name             vSmart-FRA-01
+ system-ip             1.1.1.3
+ site-id               100
+ organization-name     "NetCore-Solutions-GmbH"
+ vbond                 1.1.1.2
+!
+policy
+ lists
+  site-list Branch_Offices
+   site-id 200 ! Warsaw
+   site-id 300 ! Sevilla
+   site-id 400 ! Madrid
+  !
+  prefix-list Critical_WMS_Network
+   ip-prefix 10.30.0.0/16
+  !
+ !
+ control-policy Global_Routing_Policy
+  sequence 10
+   match
+    site-list Branch_Offices
+   !
+   action accept
+    set preference 200
+   !
+  !
+ !
+!
+vpn 0
+ interface eth0
+  ip address 10.1.1.30/24
+  no shutdown
+ !
+ ip route 0.0.0.0/0 10.1.1.1
+!
+vpn 512
+ interface eth1
+  ip address 192.168.1.30/24
+  no shutdown
+ !
+!
+config-transaction
+commit

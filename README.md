@@ -1,42 +1,209 @@
-# Cisco SD-WAN & NFV Network Modernization Project
-**Enterprise Case Study: NetCore Solutions GmbH**
+# Cisco SD-WAN & NFV Network Modernization
 
+**Bachelor Thesis Engineering Project / Выпускной инженерный проект**  
+**Research of SDN & NFV IT Technologies in Cisco Corporate Networks**
 
-## 🚀 Executive Summary
-This project delivers a complete architectural redesign and verification of a distributed enterprise network using **Cisco SDN (Software-Defined Networking)** and **NFV (Network Function Virtualization)**. The solution transitions a legacy CLI-managed infrastructure into a programmable, automated, and secure SD-WAN environment.
+A portfolio-oriented enterprise network modernization case study built around **Cisco SD-WAN**, **SDN**, **NFV**, logical simulation, and an **EVE-NG digital twin**.
 
-## 📊 Key Results (Verified in EVE-NG)
-* **ROI (1st Year):** 28%
-* **Payback Period:** 1.4 years
-* **OPEX Reduction:** 40% through automation and Hybrid WAN.
-* **Network Convergence:** < 850 ms (verified failover between MPLS and Internet).
-* **Deployment Speed (ZTP):** < 30 minutes per site (200x faster than traditional methods).
+> This public repository contains the engineering artifacts of the project. **The full bachelor thesis text/PDF is intentionally private and is not published here.**
 
-## 🏗 Network Architecture
-The infrastructure follows a hub-and-spoke topology across 4 major European sites:
-* **DE-FRA-CORE (Frankfurt):** Central Data Center with Management (vManage), Orchestration (vBond), and Control (vSmart) planes.
-* **PL-WAR-BR01 (Warsaw):** Remote office with vEdge routing.
-* **ES-MAD-HQ (Madrid):** Regional hub with High Availability (HA) and ASAv security.
-* **ES-SEV-WH (Sevilla):** Warehouse site with automated WMS traffic prioritization.
+## Project Goal
 
-![Network Topology](./NetCore_SDN_Project/topology/EVE.png)
+The project evaluates how a geographically distributed enterprise network can move away from device-by-device CLI administration toward centralized policy, virtualization and automated WAN operations.
 
-## 🛠 Technology Stack
-* **Control/Management:** Cisco SD-WAN (Viptela) vManage, vSmart, vBond.
-* **Data Plane:** Cisco vEdge Cloud, cEdge.
-* **Virtualization:** Cisco NFV, ENCS 5400, ASAv (Firewall).
-* **Simulation:** EVE-NG Professional.
-* **Automation:** Zero Touch Provisioning (ZTP), Policy-based routing.
+The engineering workflow is:
 
-## 📂 Project Structure
-* [/configs](./NetCore_SDN_Project/configs) - Base and operational configurations for all SD-WAN components.
-* [/topology](./NetCore_SDN_Project/topology) - EVE-NG export files and visual network diagrams.
-* [/analytics](./NetCore_SDN_Project/analytics) - Business impact reports, ROI calculations, and verification protocols.
-* [/presentation](./NetCore_SDN_Project/presentation) - Full technical documentation and thesis presentation.
+1. identify operational and architectural weaknesses;
+2. design a Cisco-based SDN/NFV target architecture;
+3. validate addressing, routing, segmentation and resiliency concepts;
+4. build a practical Cisco SD-WAN laboratory in EVE-NG;
+5. compare the proposed approach using technical and economic KPIs.
 
-## 🛡 Business Impact
-The project was initiated following a critical outage in Sevilla that cost the company **€57,480**. By implementing SD-WAN policies, we eliminated single points of failure and reduced manual configuration errors by **99.6%**, preventing an estimated **€247,000/year** in potential downtime losses.
+## Architecture
 
----
-**Author:** [Dzmitry Shypilau]
-**Contact:** [https://www.linkedin.com/in/dzmitry-shypilau-383b181a0/ru/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BcpoxsVJ%2FRS%2BRfCEPL9tlxQ%3D%3D]
+The academic case study focuses on four key European locations:
+
+- **DE-FRA - Frankfurt:** core and management/control infrastructure;
+- **PL-WAR - Warsaw:** branch office;
+- **ES-MAD - Madrid:** regional site;
+- **ES-SEV - Sevilla:** warehouse / WMS scenario.
+
+The exported EVE-NG snapshot contains Cisco SD-WAN/Viptela control components, WAN Edge nodes, an ASAv security VNF, ISP/underlay simulation and endpoint nodes.
+
+![EVE-NG network topology](./lab/eve-ng/topology.png)
+
+## Design vs. Implementation
+
+The defended project is broader than the exported EVE-NG snapshot. Cisco Catalyst Center/DNA Center, Cisco ISE, SGT-based microsegmentation, ENCS/NFVIS, NETCONF/YANG, ZTP and Hybrid-WAN concepts are part of the wider design and research scope.
+
+The public repository therefore uses four evidence levels:
+
+```text
+Designed / researched
+        ↓
+Logically modeled
+        ↓
+Implemented in EVE-NG
+        ↓
+Measured / evidenced
+```
+
+See [`docs/IMPLEMENTATION_STATUS.md`](./docs/IMPLEMENTATION_STATUS.md) for the current technical boundary.
+
+## Project Results and Evidence Status
+
+The defense materials report these academic case-study technical values:
+
+- **SD-WAN failover:** ~850 ms;
+- **ZTP onboarding:** 22 min measured / target <30 min;
+- **security isolation scenario:** 3.8 s.
+
+These remain **thesis-reported** values because the current public EVE-NG snapshot does not reproduce the exact test conditions needed to verify them. The repository therefore keeps generated expected-state examples separate from real runtime evidence.
+
+### Reconciled economic model
+
+The public portfolio now uses one internally consistent business-case calculation:
+
+- traditional annual OPEX: **€430,000**;
+- optimized annual OPEX: **€262,000**;
+- annual OPEX saving: **€168,000**;
+- OPEX reduction: **39.1% (~40% rounded)**;
+- avoided-loss assumption: **€247,000/year**;
+- reconciled gross annual economic effect: **€415,000/year**;
+- implementation investment range: **€180,000–€220,000**;
+- simple full-effect payback: **0.43–0.53 years**;
+- simple first-year ROI: **88.6%–130.6%**.
+
+The defense materials also report **€422,000/year**, **28% ROI** and **1.4-year payback**. Those values are preserved as **legacy thesis-reported figures**, but they are not mixed into the reconciled public model because the currently published inputs do not reproduce them under one consistent formula set.
+
+See [`analytics/ECONOMIC_MODEL.md`](./analytics/ECONOMIC_MODEL.md) for the formulas, assumptions and reconciliation notes.
+
+## Historical Software Compatibility
+
+The recovered lab preserves historical software for traceability, including **Cisco SD-WAN 20.6.2** and **ASAv 9.9(1)**. These versions are documented to reproduce the defended academic environment and are **not** recommendations for a new production deployment.
+
+The thesis also uses historical product names such as `vManage`, `vBond`, `vSmart` and `Cisco DNA Center`. Current Cisco terminology is documented alongside those names where useful.
+
+See [`docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md`](./docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md) for lifecycle, naming and reproduction guidance.
+
+## Repository Structure
+
+```text
+Cisco-SDN-NFV-Modernization-Project/
+├── README.md
+├── LICENSE
+├── SECURITY.md
+├── analytics/
+│   ├── README.md
+│   ├── ECONOMIC_MODEL.md
+│   └── case-study/
+├── configs/
+│   ├── README.md
+│   ├── canonical/
+│   └── snapshots/
+├── docs/
+│   ├── ARCHITECTURE_BASELINE.md
+│   ├── HISTORICAL_SOFTWARE_COMPATIBILITY.md
+│   ├── IMPLEMENTATION_STATUS.md
+│   ├── PRE_MERGE_REVIEW.md
+│   ├── PUBLICATION_CHECKLIST.md
+│   └── presentation/
+│       ├── NetCore_SDN_NFV_Public_GitHub_Final.pdf
+│       └── README.md
+├── evidence/
+│   ├── README.md
+│   ├── VERIFICATION_RUNBOOK.md
+│   └── simulated/
+└── lab/
+    └── eve-ng/
+        ├── README.md
+        ├── inventory.yaml
+        ├── NetCore_SDN_Project.unl
+        └── topology.png
+```
+
+### `lab/eve-ng/`
+
+The current sanitized EVE-NG laboratory snapshot, topology image and machine-readable inventory. Cisco appliance images are not distributed.
+
+### `configs/canonical/`
+
+Sanitized configuration extracts aligned with the public `.unl` baseline. Complete controller startup state is not claimed because it is not fully present in the exported lab.
+
+### `configs/snapshots/`
+
+Original text configuration exports preserved for analysis. They are explicitly marked as snapshots because the audit found parameter differences between some text exports and the `.unl` startup state.
+
+### `evidence/`
+
+Contains the verification runbook and clearly labeled simulated/expected outputs. Simulated files are not presented as captures from a running lab.
+
+### `analytics/`
+
+Supporting academic case-study documents and the reconciled economic model.
+
+### `docs/presentation/`
+
+Contains the reviewed public defense presentation: [`NetCore_SDN_NFV_Public_GitHub_Final.pdf`](./docs/presentation/NetCore_SDN_NFV_Public_GitHub_Final.pdf). The uploaded Git blob was verified byte-for-byte against the locally rendered 11-page final PDF. The full thesis document is not included.
+
+## Reproducing the Lab
+
+Cisco virtual appliance images are proprietary and intentionally absent. A user reproducing this project must supply appropriately licensed images in their own EVE-NG environment.
+
+Recommended validation flow:
+
+```text
+Import .unl topology
+        ↓
+Provide licensed Cisco images
+        ↓
+Start underlay and SD-WAN components
+        ↓
+Verify control connections / OMP / BFD
+        ↓
+Verify branch reachability and policies
+        ↓
+Run controlled failure tests where the topology supports them
+        ↓
+Save raw evidence in evidence/
+```
+
+Because the recovered controller startup state is incomplete, importing the `.unl` is not claimed to provide one-click reconstruction of a fully operational SD-WAN fabric.
+
+## Publication Scope
+
+**Not published:**
+
+- full bachelor thesis PDF;
+- thesis ODT/DOCX source;
+- complete thesis text;
+- Cisco proprietary software images;
+- credentials, private keys or secrets.
+
+**Published:**
+
+- architecture and lab topology;
+- sanitized EVE-NG definition;
+- canonical sanitized configuration extracts;
+- historical configuration snapshots with limitations documented;
+- simulated/expected evidence clearly separated from runtime evidence;
+- academic case-study summaries and economic model;
+- reviewed public defense presentation PDF;
+- implementation notes, software-compatibility note and limitations.
+
+## Status
+
+The `portfolio-cleanup` branch has completed architecture/configuration reconciliation, `.unl` sanitization, economic-model reconciliation, documentation/link/security review and public presentation publication. Remaining release-gating steps are procedural: explicit approval to move PR #1 out of Draft, explicit approval to merge into `main`, and creation of the reviewed `v1.0-thesis-portfolio` tag after merge.
+
+## Responsible Use
+
+For education, research and authorized laboratory use only. Cisco names and trademarks belong to their respective owners. Proprietary Cisco software is not distributed here.
+
+## Author
+
+**Dzmitry Shypilau**  
+*Research of SDN & NFV IT Technologies in Cisco Corporate Networks*
+
+## License
+
+Repository-authored source materials are published under the [MIT License](./LICENSE), excluding third-party trademarks and proprietary software.

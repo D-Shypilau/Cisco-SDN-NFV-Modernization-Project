@@ -1,0 +1,43 @@
+SIMULATED — NOT CAPTURED FROM A RUNNING LAB
+Status: SIMULATED-PASS
+Purpose: expected BFD/TLOC reachability between the three WAN Edge nodes in the modeled overlay.
+
+Expected command:
+show bfd sessions
+
+SYSTEM IP      SITE ID   LOCAL COLOR       REMOTE COLOR      STATE   UPTIME
+1.1.1.9        300       mpls              biz-internet       up      00:42:18
+1.1.1.13       400       mpls              public-internet    up      00:42:12
+
+PL-WAR-GW-01 summary:
+BFD sessions total: 2
+BFD sessions up:    2
+BFD sessions down:  0
+
+---
+
+SYSTEM IP      SITE ID   LOCAL COLOR       REMOTE COLOR      STATE   UPTIME
+1.1.1.5        200       biz-internet      mpls               up      00:42:18
+1.1.1.13       400       biz-internet      public-internet    up      00:42:09
+
+ES-MAD-GW-01 summary:
+BFD sessions total: 2
+BFD sessions up:    2
+BFD sessions down:  0
+
+---
+
+SYSTEM IP      SITE ID   LOCAL COLOR       REMOTE COLOR      STATE   UPTIME
+1.1.1.5        200       public-internet   mpls               up      00:42:12
+1.1.1.9        300       public-internet   biz-internet       up      00:42:09
+
+ES-SEV-WHR-GW-01 summary:
+BFD sessions total: 2
+BFD sessions up:    2
+BFD sessions down:  0
+
+Interpretation:
+A reproduced result of this form would indicate overlay TLOC reachability between Warsaw, Madrid and Sevilla.
+
+Important limitation:
+The exact BFD timer values and measured latency/loss cannot be asserted without a running lab. No timing value in this file is a measured KPI.
