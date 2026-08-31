@@ -14,7 +14,7 @@ The bachelor thesis contains three different engineering layers:
 
 Not every technology discussed in the target architecture is represented as a running node in the exported EVE-NG file.
 
-## Exported EVE-NG lab: currently verifiable
+## Exported EVE-NG lab: currently documented
 
 The exported topology contains the following main functions:
 
@@ -27,7 +27,7 @@ The exported topology contains the following main functions:
 - a Frankfurt core switching node;
 - endpoint/VPC nodes used to represent branch and warehouse clients.
 
-The repository should describe these components as the **implemented EVE-NG lab**.
+The public `.unl` has been sanitized and its branch addressing/site/transport baseline is documented in `docs/ARCHITECTURE_BASELINE.md`, `lab/eve-ng/inventory.yaml` and `configs/canonical/`.
 
 ## Thesis-level target architecture
 
@@ -45,51 +45,48 @@ The thesis additionally discusses or proposes:
 
 Until matching configuration, screenshots, logs, scripts or EVE-NG nodes are published, these items should be described as **designed, researched, modeled conceptually, or proposed**, not as fully reproduced by the exported EVE-NG lab.
 
-## Evidence status for headline results
+## Evidence status for headline technical results
 
-The thesis/defense materials report several important results. For a public engineering portfolio, every result should have a traceable evidence chain.
+The thesis/defense materials report several important results. For a public engineering portfolio, every measured result should have a traceable evidence chain.
 
-| Claim | Thesis result | Required public evidence |
-| --- | ---: | --- |
-| SD-WAN recovery / failover | 850 ms | topology showing both usable transports, BFD/SLA state, failure method, timestamped before/during/after output |
-| ZTP deployment | 22–30 min | onboarding workflow, device state before onboarding, vBond/vManage evidence, timestamps, final template/config state |
-| Security isolation | 3.8 s | actual ISE/SGT or equivalent implementation evidence, policy, trigger, timestamps and post-isolation verification |
-| OPEX reduction | ~40% | assumptions and calculation workbook/report |
-| Annual economic effect | ~€422k | baseline loss model and post-modernization assumptions |
-| ROI | 28% | one documented ROI formula and the exact inputs used |
-| Payback | 1.4 years | cash-flow/payback calculation consistent with the ROI and annual-savings model |
+- SD-WAN recovery / failover: **850 ms** — thesis-reported; current public topology lacks the same dual-transport test condition.
+- ZTP deployment: **22–30 min** — thesis-reported; current public artifacts do not contain a reproducible onboarding capture.
+- Security isolation: **3.8 s** — thesis-reported; current public lab does not implement the same ISE/SGT test chain.
 
-## Current reconciliation blockers
+Generated expected-state examples are therefore stored separately under `evidence/simulated/` and explicitly labeled as not captured from a running lab.
 
-Before the final `v1.0-thesis-portfolio` release, the following values must be made consistent across the thesis, presentation, text configs and `.unl` export:
+## Economic KPI status
 
-- organization name;
-- site IDs;
-- system IPs;
-- controller management addresses;
-- vBond/Validator address;
-- Madrid and Sevilla site mapping;
-- number of Madrid WAN Edge devices;
-- presence/absence of a Madrid firewall;
-- exact EVE-NG edition;
-- exact Cisco image versions;
-- WAN transport colors and subnets;
-- whether a branch has one or two active WAN transports;
-- whether the published security test used actual Cisco ISE/SGT or a simplified VLAN/ACL model.
+The economic model has now been reconciled separately from the legacy thesis KPI set. See [`../analytics/ECONOMIC_MODEL.md`](../analytics/ECONOMIC_MODEL.md).
 
-## Important lab limitations
+The canonical public calculation uses:
 
-The current exported EVE-NG snapshot should not yet be presented as proof of every thesis experiment.
+- traditional annual OPEX: **€430,000**;
+- optimized annual OPEX: **€262,000**;
+- annual OPEX saving: **€168,000**;
+- OPEX reduction: **39.1% (~40% rounded)**;
+- avoided-loss assumption: **€247,000/year**;
+- reconciled gross annual economic effect: **€415,000/year**;
+- investment range: **€180,000–€220,000**;
+- simple full-effect payback: **0.43–0.53 years**;
+- simple first-year ROI: **88.6%–130.6%**.
 
-In particular:
+The defense-material values **€422,000/year**, **28% ROI** and **1.4-year payback** remain historical **thesis-reported** values because the public inputs do not reproduce them under one consistent formula set.
 
-- the current export does not show Cisco DNA Center / Catalyst Center or Cisco ISE nodes;
-- the current export does not show an ENCS/NFVIS appliance;
-- the published topology/configuration set does not yet provide a reproducible dual-transport LTE/5G failover scenario for the Sevilla WAN Edge;
-- the repository does not yet contain API/NETCONF/YANG automation scripts proving controller-driven configuration;
-- the text configuration files and embedded EVE-NG startup configurations currently represent different parameter sets.
+## Remaining reconciliation / reproducibility limits
 
-These gaps do **not** invalidate the thesis design. They define what still needs to be reconciled or documented before the repository can claim full reproducibility.
+The major topology identity, site-ID, system-IP, branch underlay-addressing and public sanitization issues are now resolved for the GitHub baseline.
+
+Remaining limitations include:
+
+- complete canonical startup configs for SD-WAN Manager/vManage, Controller/vSmart and Validator/vBond are not available from the exported snapshot;
+- the exact EVE-NG edition used for the historical lab has not been independently verified;
+- genuine runtime control-plane/OMP/BFD/reachability captures are unavailable because the lab cannot currently be executed;
+- the current public topology does not reproduce the thesis dual-transport Sevilla failover scenario;
+- Cisco DNA Center / Catalyst Center, Cisco ISE and ENCS/NFVIS are not present as running nodes;
+- API/NETCONF/YANG automation scripts are not part of the recovered defended-lab artifacts.
+
+These gaps do **not** invalidate the thesis design. They define the boundary between defended research, preserved implementation artifacts and what is reproducible from the public repository today.
 
 ## Product naming note
 
