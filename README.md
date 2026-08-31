@@ -105,8 +105,10 @@ Cisco-SDN-NFV-Modernization-Project/
 │   ├── ARCHITECTURE_BASELINE.md
 │   ├── HISTORICAL_SOFTWARE_COMPATIBILITY.md
 │   ├── IMPLEMENTATION_STATUS.md
+│   ├── PRE_MERGE_REVIEW.md
 │   ├── PUBLICATION_CHECKLIST.md
 │   └── presentation/
+│       ├── NetCore_SDN_NFV_Public_GitHub_Final.pdf
 │       └── README.md
 ├── evidence/
 │   ├── README.md
@@ -142,7 +144,7 @@ Supporting academic case-study documents and the reconciled economic model.
 
 ### `docs/presentation/`
 
-Reserved for the public defense presentation. A verified PDF has been prepared locally; it will be committed only through a binary-safe upload path. The full thesis document is not included.
+Contains the reviewed public defense presentation: [`NetCore_SDN_NFV_Public_GitHub_Final.pdf`](./docs/presentation/NetCore_SDN_NFV_Public_GitHub_Final.pdf). The uploaded Git blob was verified byte-for-byte against the locally rendered 11-page final PDF. The full thesis document is not included.
 
 ## Reproducing the Lab
 
@@ -186,11 +188,12 @@ Because the recovered controller startup state is incomplete, importing the `.un
 - historical configuration snapshots with limitations documented;
 - simulated/expected evidence clearly separated from runtime evidence;
 - academic case-study summaries and economic model;
+- reviewed public defense presentation PDF;
 - implementation notes, software-compatibility note and limitations.
 
 ## Status
 
-The repository is currently being cleaned and reconciled on the `portfolio-cleanup` branch before a reviewed `v1.0-thesis-portfolio` release. The architecture/configuration baseline, `.unl` sanitization, economic model and documentation/link audit are substantially complete. Remaining work focuses on presentation publication, the unrecovered exact EVE-NG edition and any future replacement of simulated evidence with genuine runtime captures if the lab becomes available.
+The `portfolio-cleanup` branch has completed architecture/configuration reconciliation, `.unl` sanitization, economic-model reconciliation, documentation/link/security review and public presentation publication. Remaining release-gating steps are procedural: explicit approval to move PR #1 out of Draft, explicit approval to merge into `main`, and creation of the reviewed `v1.0-thesis-portfolio` tag after merge.
 
 ## Responsible Use
 
