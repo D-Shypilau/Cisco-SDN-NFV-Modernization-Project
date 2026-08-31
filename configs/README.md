@@ -26,9 +26,15 @@ Controller configs are intentionally not fabricated: the current `.unl` does not
 
 ## Security note
 
-Credential hashes discovered inside the embedded `.unl` startup configuration are omitted from `canonical/`. Before the final public `v1.0` release, the `.unl` itself still needs to be sanitized/re-exported so credential hashes are not retained inside its base64 configuration records.
+The public `.unl` and `canonical/` baseline have been sanitized. Credential-bearing AAA/user content and the recovered ASAv enable-password hash are not included in the public baseline.
 
-See:
+Historical text snapshots remain non-canonical and must still be reviewed before reuse. They are retained for provenance, not deployment.
+
+## Version note
+
+The recovered lab uses historical Cisco software, including SD-WAN 20.6.2 and ASAv 9.9(1). These versions are preserved for academic traceability rather than recommended as current production software. See [`../docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md`](../docs/HISTORICAL_SOFTWARE_COMPATIBILITY.md).
+
+See also:
 
 - [`canonical/README.md`](./canonical/README.md)
 - [`../docs/ARCHITECTURE_BASELINE.md`](../docs/ARCHITECTURE_BASELINE.md)
